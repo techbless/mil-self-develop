@@ -39,8 +39,9 @@ class UserController {
       userName: req.body.username,
       email: req.body.email,
       password: req.body.password,
-      firstName: req.body.firstname,
-      lastName: req.body.lastname,
+      rank: req.body.rank,
+      unitId: (req.body.unit_id !== '') ? req.body.unit_id : null,
+      score: 0,
     });
 
     res.json(result);

@@ -18,21 +18,40 @@
           <input placeholder="Password" class="textbox" type="password" name="password" />
         </div>
         <div>
-          <label>Email</label>
+          <label>Email:</label>
           <input placeholder="Email" type="email" name="email">
         </div>
         <div>
-          <label>First Name</label>
-          <input placeholder="First Name" type="text" name="firstname">
+          <label>Rank:</label>
+          <input placeholder="Rank" type="text" name="rank">
         </div>
         <div>
-          <label>Last Name</label>
-          <input placeholder="Last Name" type="text" name="lastname">
+          <label>Unit:</label>
+          <input placeholder="Unit" type="text" name="unit" id="unit" disabled>
+          <button type="button" onclick="open_unit_finder()">Find</button>
         </div>
         <div>
-          <input class="login-btn" type="submit" value="Log In" />
+          <input class="login-btn" type="submit" value="Register" />
         </div>
+
+        <!--Unit Id hidden data-->
+        <input type="hidden" name="unit_id" id="unit_id">
+        <script>
+          function open_unit_finder() {
+            const popUrl = "/find_unit";
+            const popOption = "top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no";
+            const unit_finder_window = window.open(popUrl, popOption);
+          }
+        </script>
       </form>
     </div>
+    <script>
+      function update_searched_unit(unit_id, unit_name) {
+        const unit_field = window.document.getElementById('unit');
+        unit_field.value = unit_name;
+        const unit_id_field = window.document.getElementById('unit_id');
+        unit_id_field.value = unit_id;
+      }
+    </script>
   </body>
 </html>

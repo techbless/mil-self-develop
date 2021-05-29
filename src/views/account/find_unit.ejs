@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <div>
+        <input type="text" name="unit_name" id="unit_name">
+        <button id="search">Search</button>
+
+        <table id="result_table" border="1">
+            <tr>
+                <th>Unit Id</th>
+                <th>UnitName</th>
+                <th>Select</th>
+            </tr>
+        </table>
+
+        <script>
+            function closeAndSendToParent(unitId, unitName) {
+                window.opener.update_searched_unit(unitId, unitName);
+                window.close();
+            }
+
+            $('#search').click(function(){
+                const searchWord = $('#unit_name').val();
+                $.ajax({
+                    url:`/search_unit?searchWord=${searchWord}`,
+                    success:function(data){
+                        result = JSON.parse(data);
+                        console.log(result);
+                        result.forEach((row) => {
+                            $('#result_table>tbody').append(`
+                                <tr>
+                                    <td>${row.unitId}</td>
+                                    <td>${row.unitName}</td>
+                                    <td>
+                                        <button onclick="closeAndSendToParent(${row.unitId}, '${row.unitName}')">
+                                            SELECT
+                                        </button>
+                                    </td>
+                                </tr>
+                            `);
+                        })
+                    }
+                })
+            })
+
+        </script>
+    </div>
+  </body>
+</html>

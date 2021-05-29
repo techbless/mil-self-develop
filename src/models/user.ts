@@ -8,12 +8,12 @@ class User extends Model {
     public userName!: string;
 
     public email!: string;
-
+    
+    public rank!: string;
+    
+    public score!: number;
+    
     public password!: string;
-
-    public firstName!: string;
-
-    public lastName!: string;
 
     public readonly createdAt!: Date;
 
@@ -36,15 +36,17 @@ User.init({
     allowNull: false,
     unique: true,
   },
+  rank: {
+    type: DataTypes.STRING(50),
+    allowNull: true,
+    unique: false,
+  },
+  score: {
+    type: DataTypes.INTEGER,
+  },
   password: {
     type: DataTypes.STRING(50),
     allowNull: false,
-  },
-  firstName: {
-    type: DataTypes.STRING(50),
-  },
-  lastName: {
-    type: DataTypes.STRING(50),
   },
 }, {
   sequelize,

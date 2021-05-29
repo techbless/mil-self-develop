@@ -16,6 +16,7 @@ class UserRouter {
     this.router.post('/login', wrapAsync(UserController.postLogin));
 
     this.router.get('/logout', UserController.logout);
+
   }
 }
 
