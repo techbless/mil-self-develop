@@ -3,19 +3,7 @@ import UnitService from '../services/unit';
 
 
 class UnitController {
-  public getLogin = (req: Request, res: Response) => {
-    if (req.user) {
-      return res.redirect('/');
-    }
-    res.render('account/login', {
-      title: 'Login',
-    });
-  };
-
   public getFindUnit = (req: Request, res: Response) => {
-    if (req.user) {
-      return res.redirect('/find_unit');
-    }
     res.render('account/find_unit', {
       title: 'Unit Finder',
     });
