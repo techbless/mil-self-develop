@@ -10,7 +10,7 @@ class UnitController {
   };
 
   public async getSearchUnit(req: Request, res: Response) {
-      const resultFromModel = await UnitService.searchUnit(req.query.searchWord);
+      const resultFromModel = await UnitService.searchUnit(req.query.searchWord as string);
       const result = resultFromModel.map((unit) => {
           return {
             unitId: unit.unitId,

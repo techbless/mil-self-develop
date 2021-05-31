@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <table>
+        <tr>
+            <th>No#</th>
+            <th>Name</th>
+            <th>Score</th>
+        </tr>
+        <% for(var i = 0; i < rankInList.length; i++) { %>
+            <tr>
+                <td><%= i %></td>
+                <td><%= rankInList[i]['Unit.unitName'] %></td>
+                <td><%= rankInList[i]['sum(`score`)'] %></td>
+            </tr>
+        <% } %>
+    </table>
+  </body>
+</html>

@@ -11,7 +11,7 @@ export default {
     "database": process.env.MYSQL_DATABASE!,
     "host": process.env.MYSQL_HOST!,
     "dialect": 'mysql',
-    logging: false,
+    logging: true,
   },
   "test": {
     "username": process.env.MYSQL_USER!,

@@ -57,7 +57,7 @@ User.init({
 });
 
 export const associate = (db: dbType) => {
-
+  User.belongsTo(db.Unit, {foreignKey: 'unitId'});
 };
 
 export default User;

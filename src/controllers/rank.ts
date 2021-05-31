@@ -14,7 +14,22 @@ class RankController {
       title: 'Ranking',
       rankInList: rankInList,
     });
-  };
+  }
+
+  public async getUnitRank(req: Request, res: Response) {
+    if(!req.user) {
+      return res.redirect('/login');
+    }
+
+    const rankInList = await RankService.getUnitRank();
+    
+    res.render('unit_rank', {
+      title: 'Ranking',
+      rankInList: rankInList,
+    });
+  }
+
+
 }
 
 export default new RankController();

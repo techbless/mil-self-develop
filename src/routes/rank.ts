@@ -10,6 +10,7 @@ class RankRouter {
     this.router = Router();
 
     this.router.get('/rank', RankController.getRank);
+    this.router.get('/unitrank', RankController.getUnitRank);
   }
 }
 

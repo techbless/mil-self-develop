@@ -32,7 +32,7 @@ Unit.init({
 });
 
 export const associate = (db: dbType) => {
-  Unit.hasMany(db.User, {foreignKey: 'unitId'});
+  Unit.hasMany(db.User, { foreignKey: 'unitId' });
 };
 
 export default Unit;
