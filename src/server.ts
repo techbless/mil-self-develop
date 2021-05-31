@@ -9,9 +9,9 @@ import app from './app';
 sequelize.sync()
   .then(() => {
     const PORT: number = +process.env.PORT! || 3000;
-    app.listen(PORT, (err) => {
-      if (err) throw err;
-      else console.log('Server Start: Listen on port ', PORT);
+    app.listen(PORT, () => {
+      //if (err) throw err;
+      /*else*/ console.log('Server Start: Listen on port ', PORT);
     });
   })
   .catch(() => {
