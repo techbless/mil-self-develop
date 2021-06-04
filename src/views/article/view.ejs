@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation.min.css'>
+    <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/190177/marked.js'></script>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro:500"rel="stylesheet'>
+    <title><%= title %></title>
+
+    
+</head>
+<body>
+    <div id="result">
+
+    </div>
+    <script>
+        const rawMarkdown = `<%= markdown %>`;
+        let markdown = rawMarkdown.replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&quot;/g, '"')
+        .replace(/&#039;/g, "'")
+        .replace(/&#96;/g, '`');
+        const rendered = marked(markdown);
+        
+        const resultView = document.getElementById('result');
+        resultView.innerHTML = rendered;
+    </script>
+</body>
+</html>

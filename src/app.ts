@@ -8,6 +8,7 @@ import UserRouter from './routes/user';
 import EchoRouter from './routes/echo';
 import UnitRouter from './routes/unit';
 import RankRouter from './routes/rank';
+import ArticleRouter from './routes/article';
 
 class App {
   public app!: express.Application;
@@ -44,6 +45,7 @@ class App {
     this.app.use('/', UnitRouter);
     this.app.use('/', EchoRouter);
     this.app.use('/', RankRouter);
+    this.app.use('/', ArticleRouter);
   }
 }
 

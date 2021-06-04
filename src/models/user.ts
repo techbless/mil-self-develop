@@ -58,6 +58,7 @@ User.init({
 
 export const associate = (db: dbType) => {
   User.belongsTo(db.Unit, {foreignKey: 'unitId'});
+  User.hasMany(db.Article, { foreignKey: 'userId' });
 };
 
 export default User;
