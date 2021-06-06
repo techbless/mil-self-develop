@@ -1,6 +1,7 @@
-import { Model, DataTypes } from 'sequelize';
+import { Model, DataTypes, Association, BelongsToGetAssociationMixin } from 'sequelize';
 import { sequelize } from './sequelize';
 import { dbType } from './index';
+import User from './user';
 
 class Article extends Model {
     public readonly articleId!: number;
@@ -12,6 +13,13 @@ class Article extends Model {
     public readonly createdAt!: Date;
 
     public readonly updatedAt!: Date;
+
+    public getUser!: BelongsToGetAssociationMixin<User>;
+
+    public static associations: {
+      projects: Association<Article, User>;
+    };
+
 }
 
 Article.init({
