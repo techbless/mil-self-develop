@@ -10,8 +10,9 @@ export default {
     "password": process.env.MYSQL_PASSWORD!,
     "database": process.env.MYSQL_DATABASE!,
     "host": process.env.MYSQL_HOST!,
+    "timezone": '+09:00',
     "dialect": 'mysql',
-    logging: false,
+    logging: console.log,
   },
   "test": {
     "username": process.env.MYSQL_USER!,
@@ -19,6 +20,7 @@ export default {
     "database": process.env.MYSQL_DATABASE!,
     "host": process.env.MYSQL_HOST!,
     "dialect": 'mysql',
+    "timezone": '+09:00',
     logging: false,
   },
   "production": {
@@ -26,6 +28,7 @@ export default {
     "password": process.env.MYSQL_PASSWORD!,
     "database": process.env.MYSQL_DATABASE!,
     "host": process.env.MYSQL_HOST!,
+    "timezone": '+09:00',
     "dialect": 'mysql',
     logging: false,
   },
