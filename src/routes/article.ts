@@ -14,6 +14,8 @@ class ArticleRouter {
     this.router.get('/article', passportConfig.isAuthenticated, wrapAsync(ArticleController.getArticle));
     this.router.post('/article', passportConfig.isAuthenticated, wrapAsync(ArticleController.postArticle));
 
+    this.router.get('/articles', passportConfig.isAuthenticated, wrapAsync(ArticleController.getArticles));
+
     this.router.get('/calendar', passportConfig.isAuthenticated, ArticleController.getCalendar);
   }
 }

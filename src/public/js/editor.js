@@ -1,3 +1,5 @@
+const textArea = document.getElementById('editor');
+
 var vm = new Vue({
   el: '#editor_window',
   data: {
@@ -10,7 +12,7 @@ var vm = new Vue({
     }
   },
   created() {
-    this.mdRaw = '';
+    this.mdRaw = textArea.value;
   },
   methods: {
     mdRender: function() {
