@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import RankService from '../services/rank';
 
 
@@ -16,6 +16,7 @@ class RankController {
     });
   }
 
+
   public async getUnitRank(req: Request, res: Response) {
     if(!req.user) {
       return res.redirect('/login');
@@ -28,8 +29,6 @@ class RankController {
       rankInList: rankInList,
     });
   }
-
-
 }
 
 export default new RankController();

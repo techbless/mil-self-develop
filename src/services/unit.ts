@@ -3,15 +3,13 @@ import { Op } from 'sequelize';
 
 class UnitService {
     public async searchUnit(searchWord: string) {
-        const result = await Unit.findAll({
+        return Unit.findAll({
             where:{
                 unitName: {
                     [Op.like]: "%" + searchWord + "%"
                 }
             }
         });
-
-        return result;
     }
 }
 

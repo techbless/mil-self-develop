@@ -1,5 +1,4 @@
-import { Router, Response, Request } from 'express';
-import * as passportConfig from '../config/passport';
+import { Router } from 'express';
 import IndexController from '../controllers';
 
 class IndexRouter {

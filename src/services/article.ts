@@ -3,13 +3,11 @@ import { Op } from 'sequelize';
 
 class ArticleService {
     public async getArticle(articleId: number) {
-        const result = await Article.findOne({
+       return Article.findOne({
             where: {
                 articleId,
             }
         });
-
-        return result;
     }
 
 
@@ -17,15 +15,13 @@ class ArticleService {
         const startedDate = new Date(year, month - 1, 2);
         const endDate = new Date(year, month, 1);
 
-        const result = await Article.findAll({
+        return Article.findAll({
             attributes: ['articleId', 'subject', 'createdAt'],
             where: {
                 userId,
                 createdAt: {[Op.between]: [startedDate, endDate]},
             }
-        })
-        
-        return result;
+        });
     }
 
     public async getTodayArticle(userId: number) {
@@ -36,28 +32,26 @@ class ArticleService {
 
         
 
-        const result = await Article.findOne({
+        return Article.findOne({
             where: {
                 userId,
                 createdAt: {[Op.between]: [startedDate, endDate]},
             }
         });
-
-        return result;
     }
 
+    
     public async addArticleTo(userId:  number, subject: string, markdown: string) {
-        const result = await Article.create({
+        return Article.create({
             userId: userId,
             subject: subject,
             markdown: markdown,
         });
-
-        return result;
     }
 
+
     public async updateArticle(userId: number, articleId: number, subject: string, markdown: string) {
-        const result = await Article.update(
+        return Article.update(
             {
                 subject,
                 markdown,
@@ -69,8 +63,6 @@ class ArticleService {
                 },
             }
         )
-            
-        return result;
     }
 }
 

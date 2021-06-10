@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import ArticleService from '../services/article';
 
 
@@ -19,19 +19,19 @@ class ArticleController {
       const article = await ArticleService.getArticle(articleId);
 
       const author = await article?.getUser();
-      if(author?.userId === req.user?.userId) {
-        res.render('article/editor', {
-          updating: true,
-          article,
-        });
-      } else {
+      if(author?.userId !== req.user?.userId) {
         res.render('article/view', {
           title: 'Not Authorized',
           markdown: "# You don't have it",
-        })
+        });
+        
+        return;
       }
-
-      return;
+      
+      res.render('article/editor', {
+        updating: true,
+        article,
+      });
     }
 
     const article = await ArticleService.getTodayArticle(userId);
@@ -116,7 +116,7 @@ class ArticleController {
           const user = await article?.getUser();
 
           if(user?.userId == userId) {
-            result = await ArticleService.updateArticle(userId, articleId, subject, markdown);
+            await ArticleService.updateArticle(userId, articleId, subject, markdown);
           }
         }
 
