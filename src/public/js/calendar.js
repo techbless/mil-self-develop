@@ -88,23 +88,23 @@ async function buildCalendar() {
   for (let day = 1 - doMonth.getDay(); daysLength >= day; day++) {
     let column = row.insertCell();
 
-    const res = findArticleFor(day, articles);
-
+    
     // @param 평일( 전월일과 익월일의 데이터 제외 )
     if (Math.sign(day) == 1 && lastDate.getDate() >= day) {
       // @param 평일 날짜 데이터 삽입
       column.innerText = autoLeftPad(day, 2);
-
+      
       // @param 일요일인 경우
       if (dom % 7 == 1) {
         column.style.color = "#FF4D4D";
       }
-
+      
       // @param 토요일인 경우
       if (dom % 7 == 0) {
         column.style.color = "#4D4DFF";
         row = tbCalendar.insertRow(); // @param 토요일이 지나면 다시 가로 행을 한줄 추가한다.
       }
+
     }
 
     // @param 평일 전월일과 익월일의 데이터 날짜변경
@@ -180,6 +180,16 @@ async function buildCalendar() {
         column.onclick = function () {
           calendarChoiceDay(this);
         };
+      }
+    }
+
+    // article이 존재하는 날인 경우
+    const res = findArticleFor(day, articles);
+    if(res.length > 0) {
+      column.style.backgroundColor = "green";
+      column.style.cursor = "zoom-in";
+      column.onclick = function() {
+        window.open(`/article?articleId=${res[0].articleId}`);
       }
     }
 
