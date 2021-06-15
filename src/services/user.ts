@@ -21,6 +21,15 @@ class UserService {
       }
     );
   }
+
+  public async updatePassword(email: string, password: string) {
+    const user = await this.getUserByEmail(email);
+    await user!.update(
+      {
+        password,
+      }
+    )
+  }
 }
 
 export default new UserService();

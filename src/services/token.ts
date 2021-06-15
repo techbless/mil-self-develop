@@ -17,7 +17,7 @@ class TokenService {
   }
 
 
-  public async verifyToken(email: string, token: string, purpose: Purpose) {
+  public async verifyToken(email: string, token: string, purpose: Purpose, remove: boolean) {
       const user = await UserService.getUserByEmail(email);
 
       if(!user) {
@@ -36,7 +36,9 @@ class TokenService {
         return false;
       }
   
-      await tokens[0].destroy();
+      if(remove) {
+          await tokens[0].destroy();
+      }
       return true;
   }
 

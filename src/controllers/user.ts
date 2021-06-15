@@ -45,7 +45,7 @@ class UserController {
     const { email, token, purpose } = req.query;
     
 
-    if(!await TokenService.verifyToken(email as string, token as string, purpose as Purpose)) {
+    if(!await TokenService.verifyToken(email as string, token as string, purpose as Purpose, true)) {
       console.log("failed");
       res.send('인증 실패');
       return;
@@ -70,6 +70,61 @@ class UserController {
     await EmailService.sendVerficationEmail(user, 'register');
 
     res.json(user);
+  }
+
+
+  public getPasswordResetPage = async (req: Request, res: Response) => {
+    res.render('account/reset_password', {
+      title: 'Reset Password',
+      isVerified: false,
+    });
+  }
+
+
+  public getSendPasswordMail = async(req: Request, res: Response) => {
+    const email: string = req.query.email as string;
+    const user = await UserService.getUserByEmail(email);
+
+    if(user) {
+      EmailService.sendVerficationEmail(user, 'reset');
+      res.send("please check your inbox");
+    }
+    else {
+      res.send("There is no such user");
+    }
+  }
+
+
+  public getResetPassword = async (req: Request, res: Response) => {
+    const email: string = req.query.email as string;
+    const token: string = req.query.token as string;
+
+    if(!await TokenService.verifyToken(email, token, 'reset', false)) {
+      res.send("Failed to verify");
+      return;
+    }
+
+    res.render('account/reset_password', {
+      title: 'Reset Password',
+      isVerified: true,
+      email,
+      token,
+    });
+  }
+
+
+  public postResetPassword = async (req: Request, res: Response) => {
+    const email: string = req.body.email as string;
+    const token: string = req.body.token as string;
+    const password: string = req.body.password as string;
+
+    if(!await TokenService.verifyToken(email, token, 'reset', true)) {
+      res.send("Failed to verify");
+      return;
+    }
+
+    await UserService.updatePassword(email, password);
+    res.send("Password has been updated");
   }
 
 

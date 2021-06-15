@@ -15,9 +15,15 @@ class UserRouter {
     this.router.get('/login', UserController.getLogin);
     this.router.post('/login', wrapAsync(UserController.postLogin));
 
-    this.router.get('/verify', UserController.getVerify);
+    this.router.get('/verify', wrapAsync(UserController.getVerify));
 
-    this.router.get('/logout', UserController.logout);
+    this.router.get('/reset_page', wrapAsync(UserController.getPasswordResetPage));
+    this.router.get('/send_password', wrapAsync(UserController.getSendPasswordMail));
+    this.router.get('/reset_password', wrapAsync(UserController.getResetPassword));
+    this.router.post('/reset_password', wrapAsync(UserController.postResetPassword));
+
+
+    this.router.get('/logout', wrapAsync(UserController.logout));
 
   }
 }

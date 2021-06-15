@@ -38,13 +38,15 @@ class EmailService {
   public async sendVerficationEmail(user: User, purpose: Purpose) {
     const token: string = await TokenService.issueToken(user.userId, purpose);
 
+    let url;
     switch(purpose) {
       case 'register':
-        const url = `localhost:3000/verify?email=${user.email}&token=${token}&purpose=register`;
+        url = `localhost:3000/verify?email=${user.email}&token=${token}&purpose=register`;
         this.sendEmail(user.email, '회원가입 인증', url);
         break;
       case 'reset':
-        this.sendEmail(user.email, '비밀번호 재설정', token);
+        url = `localhost:3000/reset_password?email=${user.email}&token=${token}`
+        this.sendEmail(user.email, '비밀번호 재설정', url);
         break;
       default:
         break;
