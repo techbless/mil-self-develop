@@ -17,7 +17,7 @@ class Article extends Model {
     public getUser!: BelongsToGetAssociationMixin<User>;
 
     public static associations: {
-      projects: Association<Article, User>;
+      articles: Association<Article, User>;
     };
 
 }

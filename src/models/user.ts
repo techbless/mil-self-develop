@@ -1,6 +1,7 @@
-import { Model, DataTypes } from 'sequelize';
+import { Model, DataTypes, HasManyGetAssociationsMixin, Association } from 'sequelize';
 import { sequelize } from './sequelize';
 import { dbType } from './index';
+import Token from './token';
 
 class User extends Model {
     public readonly userId!: number;
@@ -15,9 +16,17 @@ class User extends Model {
     
     public password!: string;
 
+    public isVerified!: boolean;
+
     public readonly createdAt!: Date;
 
     public readonly updatedAt!: Date;
+
+    public getTokens!: HasManyGetAssociationsMixin<Token>;
+
+    public static associations: {
+      tokens: Association<User, Token>;
+    };
 }
 
 User.init({
@@ -48,6 +57,10 @@ User.init({
     type: DataTypes.STRING(50),
     allowNull: false,
   },
+  isVerified: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+  },
 }, {
   sequelize,
   modelName: 'User',
@@ -59,6 +72,7 @@ User.init({
 export const associate = (db: dbType) => {
   User.belongsTo(db.Unit, {foreignKey: 'unitId'});
   User.hasMany(db.Article, { foreignKey: 'userId' });
+  User.hasMany(db.Token, { foreignKey: 'userId' });
 };
 
 export default User;

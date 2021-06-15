@@ -21,10 +21,11 @@ passport.deserializeUser(async (id: number, done) => {
 const LocalStrategy = passportLocal.Strategy;
 
 passport.use(
-  new LocalStrategy(async (username, password, done) => {
+  new LocalStrategy(async (email, password, done) => {
     const user = await User.findOne({
       where: {
-        userName: username,
+        email,
+        //userName: username,
       },
     });
 

@@ -1,8 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
 import { IVerifyOptions } from 'passport-local';
 import User from '../models/user';
+import { Purpose } from '../models/token';
 
 import passport = require('passport');
+
+import UserService from '../services/user';
+import TokenService from '../services/token';
+import EmailService from '../services/email';
+import Token from '../models/token';
 
 
 class UserController {
@@ -34,18 +40,38 @@ class UserController {
     });
   }
 
+
+  public getVerify = async(req: Request, res: Response) => {
+    const { email, token, purpose } = req.query;
+    
+
+    if(!await TokenService.verifyToken(email as string, token as string, purpose as Purpose)) {
+      console.log("failed");
+      res.send('인증 실패');
+      return;
+    }
+
+    UserService.verifyUser(email as string);
+    res.send("인증 성공");
+  }
+
+
   public postRegister = async (req: Request, res: Response) => {
-    const result: User = await User.create({
+    const user: User = await User.create({
       userName: req.body.username,
       email: req.body.email,
       password: req.body.password,
       rank: req.body.rank,
+      isVerified: false,
       unitId: (req.body.unit_id !== '') ? req.body.unit_id : null,
       score: 0,
     });
 
-    res.json(result);
+    await EmailService.sendVerficationEmail(user, 'register');
+
+    res.json(user);
   }
+
 
   public logout = (req: Request, res: Response) => {
     req.logout();

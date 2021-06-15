@@ -15,6 +15,8 @@ class UserRouter {
     this.router.get('/login', UserController.getLogin);
     this.router.post('/login', wrapAsync(UserController.postLogin));
 
+    this.router.get('/verify', UserController.getVerify);
+
     this.router.get('/logout', UserController.logout);
 
   }
