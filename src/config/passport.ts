@@ -43,6 +43,15 @@ passport.use(
 
 
 export const isAuthenticated = (req: Request, res: Response, next: NextFunction) => {
-  if (req.isAuthenticated()) return next();
-  res.redirect('/login');
+  if (!req.isAuthenticated()) {
+    res.redirect('/login');
+    return;
+  }
+
+  if(!req.user.isVerified) {
+    res.send("Please verify your email address");
+    return;
+  }
+
+  return next();
 };
