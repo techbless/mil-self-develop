@@ -17,7 +17,7 @@ class TokenService {
   }
 
 
-  public async verifyToken(email: string, token: string, purpose: Purpose, remove: boolean) {
+ public async verifyToken(email: string, token: string, purpose: Purpose, remove: boolean) {
       const user = await UserService.getUserByEmail(email);
 
       if(!user) {
@@ -28,9 +28,8 @@ class TokenService {
         where: {
             token: token,
             purpose,
-          },
+          }, 
       });
-
       
       if (tokens.length <= 0) {
         return false;
@@ -41,29 +40,6 @@ class TokenService {
       }
       return true;
   }
-
-  //public async verifyToken(email: string, tokenFromLink: string, purpose: Purpose): Promise<boolean> {
-    /*const subscriber = await SubscriptionService.findSubscriberByEmail(email);
-
-    if (!subscriber) {
-      return false;
-    }
-
-    const token = await subscriber.getTokens({
-      where: {
-        token: tokenFromLink,
-        purpose,
-      },
-    });
-
-    // if the token exists here, the verification is valid.
-    if (token.length <= 0) {
-      return false;
-    }
-
-    token[0].destroy();
-    return true;*/
-  //}
 }
 
 export default new TokenService();

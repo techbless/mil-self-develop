@@ -24,7 +24,7 @@ class App {
     this.app.use(helmet());
     this.app.use(express.static(`${__dirname}/public`));
     this.app.use(express.json());
-    this.app.use(express.urlencoded({ extended: false }));
+    this.app.use(express.urlencoded({ extended: true }));
 
     /**
      * Recommendation: You should session store for saving session.

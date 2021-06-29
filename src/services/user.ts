@@ -1,12 +1,20 @@
-import User from '../models/user';
+import User from "../models/user";
 
 class UserService {
   public async getUserByEmail(email: string) {
     return User.findOne({
       where: {
         email: email,
-      }
-    })
+      },
+    });
+  }
+
+  public async getUserById(userId: number) {
+    return User.findOne({
+      where: {
+        userId: userId,
+      },
+    });
   }
 
   public verifyUser(email: string) {
@@ -17,18 +25,16 @@ class UserService {
       {
         where: {
           email,
-        }
+        },
       }
     );
   }
 
   public async updatePassword(email: string, password: string) {
     const user = await this.getUserByEmail(email);
-    await user!.update(
-      {
-        password,
-      }
-    )
+    await user!.update({
+      password,
+    });
   }
 }
 

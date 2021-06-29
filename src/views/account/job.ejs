@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>SDIM Page2</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/jobs.css" />
+
+    <p class="a">For<br />Starters</p>
+    <div class="updown"></div>
+    <p class="title">Choose Your Interest</p>
+    <p class="h">선호하는 분야를 선택하시오</p>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-1">
+          <div class="rect_left"></div>
+        </div>
+        <div class="col-sm-10">
+          <form action="/jobs" method="POST">
+            <div class="chkbox">
+              <input
+                type="checkbox"
+                name="categories[]"
+                value="사회복지"
+              />사회복지
+            </div>
+            <div class="chkbox">
+              <input type="checkbox" name="categories[]" value="부동산" />부동산
+            </div>
+            <div class="chkbox">
+              <input
+                type="checkbox"
+                name="categories[]"
+                value="농업, 원예 및 축산"
+              />농업, 원예 및 축산
+            </div>
+            <div class="chkbox">
+              <input type="checkbox" name="categories[]" value="디자인" />디자인
+            </div>
+            <div class="chkbox">
+              <input type="checkbox" name="categories[]" value="기계" />기계
+            </div>
+            <div class="chkbox">
+              <input
+                type="checkbox"
+                name="categories[]"
+                value="자동차정비"
+              />자동차정비
+            </div>
+            <div class="chkbox">
+              <input type="checkbox" name="categories[]" value="재료" />재료
+            </div>
+            <div class="chkbox">
+              <input
+                type="checkbox"
+                name="categories[]"
+                value="환경 및 안전공학"
+              />환경 및 안전공학
+            </div>
+            <div class="chkbox">
+              <input
+                type="checkbox"
+                name="categories[]"
+                value="전기, 전자"
+              />전기, 전자
+            </div>
+            <div class="chkbox">
+              <input type="checkbox" name="categories[]" value="통신" />통신
+            </div>
+            <div class="chkbox">
+              <input
+                type="checkbox"
+                name="categories[]"
+                value="건설 및 건축"
+              />건설 및 건축
+            </div>
+            <div class="chkbox">
+              <input type="checkbox" name="categories[]" value="화학" />화학
+            </div>
+            <div class="chkbox">
+              <input
+                type="checkbox"
+                name="categories[]"
+                value="정보통신"
+              />정보통신
+            </div>
+            <div class="chkbox">
+              <input
+                type="checkbox"
+                name="categories[]"
+                value="건설기계운전"
+              />건설기계운전
+            </div>
+            <div class="chkbox">
+              <input
+                type="checkbox"
+                name="categories[]"
+                value="운전 및 운송"
+              />운전 및 운송
+            </div>
+            <div class="chkbox">
+              <input
+                type="checkbox"
+                name="categories[]"
+                value="사회과학"
+              />사회과학
+            </div>
+            <div class="chkbox">
+              <input
+                type="checkbox"
+                name="categories[]"
+                value="음식서비스"
+              />음식서비스
+            </div>
+            <div class="chkbox">
+              <input type="checkbox" name="categories[]" value="컴퓨터" />컴퓨터
+            </div>
+            <div class="chkbox">
+              <input
+                type="checkbox"
+                name="categories[]"
+                value="경영 및 회계"
+              />경영 및 회계
+            </div>
+            <br /><br />
+            <input type="submit" value="선택 완료" />
+          </form>
+        </div>
+        <div class="col-sm-1">
+          <div class="rect_right"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
+</html>

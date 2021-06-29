@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap");
+
+body {
+  font-family: "Noto Sans KR";
+  background-image: url("#");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.rect_left {
+  width: 100vw;
+  height: 315px;
+  background: #cacaca;
+  opacity: 0.15;
+  float: right;
+  margin-top: 0px;
+}
+
+.rect_blue {
+  width: 100vw;
+  height: 1000px;
+  background: #edf6ff;
+  float: center;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+}
+
+.rect_right {
+  width: 100vw;
+  height: 315px;
+  background: #62debd;
+  opacity: 0.15;
+  float: center;
+  margin-top: 0px;
+}
+
+.title {
+  font: normal normal 900 60px/87px Noto Sans CJK KR;
+  color: #62debd;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.updown {
+  border: 1px solid #707070;
+  background: #707070;
+  width: 0.01px;
+  height: 100px;
+  margin-left: 40px;
+  opacity: 0.15;
+}
+
+.h {
+  font-size: 20px;
+  font-weight: normal;
+  text-align: center;
+  margin-top: 20px;
+  color: #707070;
+  padding: 0.5em 0;
+}
+
+.a {
+  font-size: 30px;
+  font-weight: bold;
+  color: #707070;
+  margin-top: 20px;
+  margin-left: 40px;
+  padding: 0.5em 0;
+}
+
+.a_w {
+  font-size: 20px;
+  font-weight: normal;
+  text-align: center;
+  margin-top: 20px;
+  color: #ffffff;
+  padding: 0.5em 0;
+}
+
+.chkbox {
+  background-color: white;
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  box-shadow: 0px 3px 6px #00000029;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="submit"] {
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0px 3px 6px #00000029;
+  outline: none;
+  padding: 2px 10px;
+  background-color: #ffffff;
+  cursor: pointer;
+  zoom: 1.5;
+}
+
+input[type="submit"]:hover {
+  background-color: aquamarine;
+}

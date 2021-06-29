@@ -1,5 +1,6 @@
-import { Router } from 'express';
-import IndexController from '../controllers';
+import { Router } from "express";
+import IndexController from "../controllers";
+import wrapAsync from "./async.wrapper";
 
 class IndexRouter {
   public router!: Router;
@@ -7,7 +8,7 @@ class IndexRouter {
   constructor() {
     this.router = Router();
 
-    this.router.get('/', IndexController.index);
+    this.router.get("/", wrapAsync(IndexController.index));
   }
 }
 

@@ -7,5 +7,12 @@
   </head>
   <body>
     <h1>Hello, <%= userName %></h1>
+
+    <% if(books) { %> <% for(let i = 0; i < books.length; i++) { %>
+    <div>
+      <img src="<%= books[i].imageURL %>" alt="<%= books[i].title %>" />
+      <p><%= books[i].title %></p>
+    </div>
+    <% } %> <% } %>
   </body>
 </html>

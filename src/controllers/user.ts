@@ -8,7 +8,6 @@ import passport = require('passport');
 import UserService from '../services/user';
 import TokenService from '../services/token';
 import EmailService from '../services/email';
-import Token from '../models/token';
 
 
 class UserController {

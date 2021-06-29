@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
 var today = new Date(); // @param 전역 변수, 오늘 날짜 / 내 컴퓨터 로컬을 기준으로 today에 Date 객체를 넣어줌
 var date = new Date(); // @param 전역 변수, today의 Date를 세어주는 역할
 
-
 async function getArticles(year, month) {
   const url = `/articles?year=${year}&month=${month}`;
   const result = await fetch(url);
@@ -18,7 +17,7 @@ function findArticleFor(day, articles) {
 
   articles.forEach((article) => {
     const date = new Date(article.createdAt);
-    if(date.getDate() == day) {
+    if (date.getDate() == day) {
       result.push(article);
     }
   });
@@ -27,8 +26,8 @@ function findArticleFor(day, articles) {
 }
 
 /**
-       * @brief   이전달 버튼 클릭
-       */
+ * @brief   이전달 버튼 클릭
+ */
 function prevCalendar() {
   this.today = new Date(
     today.getFullYear(),
@@ -39,8 +38,8 @@ function prevCalendar() {
 }
 
 /**
-       * @brief   다음달 버튼 클릭
-       */
+ * @brief   다음달 버튼 클릭
+ */
 function nextCalendar() {
   this.today = new Date(
     today.getFullYear(),
@@ -51,9 +50,9 @@ function nextCalendar() {
 }
 
 /**
-       * @brief   캘린더 오픈
-       * @details 날짜 값을 받아 캘린더 폼을 생성하고, 날짜값을 채워넣는다.
-       */
+ * @brief   캘린더 오픈
+ * @details 날짜 값을 받아 캘린더 폼을 생성하고, 날짜값을 채워넣는다.
+ */
 async function buildCalendar() {
   let doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
   let lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
@@ -80,40 +79,34 @@ async function buildCalendar() {
   // @details 시작일의 요일값( doMonth.getDay() ) + 해당월의 전체일( lastDate.getDate())을  더해준 값에서
   //               7로 나눈값을 올림( Math.ceil() )하고 다시 시작일의 요일값( doMonth.getDay() )을 빼준다.
   let daysLength =
-      Math.ceil((doMonth.getDay() + lastDate.getDate()) / 7) * 7 -
-      doMonth.getDay();
+    Math.ceil((doMonth.getDay() + lastDate.getDate()) / 7) * 7 -
+    doMonth.getDay();
 
   // @param 달력 출력
   // @details 시작값은 1일을 직접 지정하고 요일값( doMonth.getDay() )를 빼서 마이너스( - )로 for문을 시작한다.
   for (let day = 1 - doMonth.getDay(); daysLength >= day; day++) {
     let column = row.insertCell();
 
-    
     // @param 평일( 전월일과 익월일의 데이터 제외 )
     if (Math.sign(day) == 1 && lastDate.getDate() >= day) {
       // @param 평일 날짜 데이터 삽입
       column.innerText = autoLeftPad(day, 2);
-      
+
       // @param 일요일인 경우
       if (dom % 7 == 1) {
         column.style.color = "#FF4D4D";
       }
-      
+
       // @param 토요일인 경우
       if (dom % 7 == 0) {
         column.style.color = "#4D4DFF";
         row = tbCalendar.insertRow(); // @param 토요일이 지나면 다시 가로 행을 한줄 추가한다.
       }
-
     }
 
     // @param 평일 전월일과 익월일의 데이터 날짜변경
     else {
-      let exceptDay = new Date(
-        doMonth.getFullYear(),
-        doMonth.getMonth(),
-        day
-      );
+      let exceptDay = new Date(doMonth.getFullYear(), doMonth.getMonth(), day);
       column.innerText = autoLeftPad(exceptDay.getDate(), 2);
       column.style.color = "#A9A9A9";
     }
@@ -143,6 +136,7 @@ async function buildCalendar() {
           column.style.cursor = "pointer";
           column.onclick = function () {
             calendarChoiceDay(this);
+            window.open(`/editor`);
           };
         }
 
@@ -185,12 +179,12 @@ async function buildCalendar() {
 
     // article이 존재하는 날인 경우
     const res = findArticleFor(day, articles);
-    if(res.length > 0) {
+    if (res.length > 0) {
       column.style.backgroundColor = "green";
       column.style.cursor = "zoom-in";
-      column.onclick = function() {
+      column.onclick = function () {
         window.open(`/article?articleId=${res[0].articleId}`);
-      }
+      };
     }
 
     dom++;
@@ -198,15 +192,14 @@ async function buildCalendar() {
 }
 
 /**
-       * @brief   날짜 선택
-       * @details 사용자가 선택한 날짜에 체크표시를 남긴다.
-       */
+ * @brief   날짜 선택
+ * @details 사용자가 선택한 날짜에 체크표시를 남긴다.
+ */
 function calendarChoiceDay(column) {
   // @param 기존 선택일이 존재하는 경우 기존 선택일의 표시형식을 초기화 한다.
   if (document.getElementsByClassName("choiceDay")[0]) {
-    document.getElementsByClassName(
-      "choiceDay"
-    )[0].style.backgroundColor = "#FFFFFF";
+    document.getElementsByClassName("choiceDay")[0].style.backgroundColor =
+      "#FFFFFF";
     document
       .getElementsByClassName("choiceDay")[0]
       .classList.remove("choiceDay");
@@ -220,11 +213,11 @@ function calendarChoiceDay(column) {
 }
 
 /**
-       * @brief   숫자 두자릿수( 00 ) 변경
-       * @details 자릿수가 한지라인 ( 1, 2, 3등 )의 값을 10, 11, 12등과 같은 두자리수 형식으로 맞추기위해 0을 붙인다.
-       * @param   num     앞에 0을 붙일 숫자 값
-       * @param   digit   글자의 자릿수를 지정 ( 2자릿수인 경우 00, 3자릿수인 경우 000 … )
-       */
+ * @brief   숫자 두자릿수( 00 ) 변경
+ * @details 자릿수가 한지라인 ( 1, 2, 3등 )의 값을 10, 11, 12등과 같은 두자리수 형식으로 맞추기위해 0을 붙인다.
+ * @param   num     앞에 0을 붙일 숫자 값
+ * @param   digit   글자의 자릿수를 지정 ( 2자릿수인 경우 00, 3자릿수인 경우 000 … )
+ */
 function autoLeftPad(num, digit) {
   if (String(num).length < digit) {
     num = new Array(digit - String(num).length + 1).join("0") + num;

@@ -7,7 +7,7 @@ export type Purpose = 'register' | 'reset' | null;
 class Token extends Model {
     public readonly tokenId!: number;
 
-    public subscriberId!: number;
+    public userId!: number;
 
     public token!: string;
 

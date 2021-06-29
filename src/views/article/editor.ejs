@@ -1,76 +1,186 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Article Editor</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation.min.css'>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Code+Pro:500"rel="stylesheet'><link rel="stylesheet" href="../css/editor.css">
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Edit Page</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href='https://fonts.googleapis.com/css?family=Source+Code+Pro:500"rel="stylesheet'
+    />
+    <link rel="stylesheet" href="../css/editor.css" />
+    <script>
+      function submit() {
+        const editor = document.getElementById("editor");
+        const markdown = editor.value;
+        const hiddenInputFormForMarkdown = document.getElementById("markdown");
+        hiddenInputFormForMarkdown.value = markdown;
 
-<script>
-  function submit() {
-      const editor = document.getElementById('editor');
-      const markdown = editor.value;
-      const hiddenInputFormForMarkdown = document.getElementById('markdown');
-      hiddenInputFormForMarkdown.value = markdown;
+        //submit
+        const form = document.getElementById("form");
+        form.submit();
+      }
+    </script>
+  </head>
 
-      //submit
-      const form = document.getElementById('form');
-      form.submit();
-  }
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
 
-</script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
-</head>
-<body>
-  <!-- partial:index.partial.html -->
-<div class="medium-offset-1 medium-10 text-center" style="display: inline-block;">
-    <label for="subject" style="font-size: 20px;">SUBJECT</label>
-    <form action="/article" method="POST" id="form">
-        <% if(updating) { %>
-          <input type="text" name="subject" id="subject" style="display: inline-block;" value="<%= article.subject %>">
-          <input type="hidden" name="markdown" id="markdown" value="<%= article.subject %>">
-          <input type="hidden" name="articleId" value="<%= article.articleId %>">
-        <% } else { %>
-          <input type="text" name="subject" id="subject" style="display: inline-block;">
-          <input type="hidden" name="markdown" id="markdown">
-          <input type="hidden" name="articleId" value="-999">
-        <% } %>
-    </form>
-</div>
-<div>
-</div>
-<div id="editor_window">
-  <div class="row expanded collapse">
-    <div class="medium-6 column">
-      <div class="row column">
-        <div class="col-title">
-          Mardown 
+    <script type="text/javascript" src="js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <!--네비 바-->
+    <div class="navbar navbar-expand-md" role="navigation">
+      <p class="a_w">SDIM</p>
+
+      <div class="collapse navbar-collapse" id="navBarMenu">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="#" class="a_w">partA</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="a_w">partB</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="a_w">My Page</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-1">
+          <p class="title">06/27</p>
+        </div>
+        <div class="col-sm-10">
+          <main role="main" class="container">
+            <form action="/article" method="POST" id="form">
+              <div class="a">
+                <% if(updating) { %>
+                <input
+                  type="text"
+                  class="edit_title"
+                  name="subject"
+                  id="subject"
+                  style="display: inline-block"
+                  value="<%= article.subject %>"
+                />
+                <input
+                  type="hidden"
+                  name="markdown"
+                  id="markdown"
+                  value="<%= article.subject %>"
+                />
+                <input
+                  type="hidden"
+                  name="articleId"
+                  value="<%= article.articleId %>"
+                />
+                <% } else { %>
+                <input
+                  type="text"
+                  class="edit_title"
+                  name="subject"
+                  id="subject"
+                  style="display: inline-block"
+                />
+                <input type="hidden" name="markdown" id="markdown" />
+                <input type="hidden" name="articleId" value="-999" />
+                <% } %>
+
+                <div id="editor_window">
+                  <div class="row">
+                    <div class="medium-6 column">
+                      <div class="row column">
+                        <div class="col-title">Mardown</div>
+                      </div>
+                      <% if(updating) { %>
+                      <textarea
+                        autocapitalize="off"
+                        autocomplete="off"
+                        autocorrect="off"
+                        id="editor"
+                        spellcheck="false"
+                        v-model="mdRaw"
+                      >
+            <%= article.markdown %></textarea
+                      >
+                      <% } else { %>
+                      <textarea
+                        autocapitalize="off"
+                        autocomplete="off"
+                        autocorrect="off"
+                        id="editor"
+                        spellcheck="false"
+                        v-model="mdRaw"
+                      ></textarea>
+                      <% } %>
+                    </div>
+                    <div class="medium-6 column">
+                      <div class="col-title">Render</div>
+                      <div
+                        style="background-color: white"
+                        class="markdown-body"
+                        v-html="mdRawRender"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </main>
+        </div>
+        <div class="col-sm-1">
+          <div class="pt-1 text-right">
+            <button onclick="submit()" class="edit_btn" type="button">
+              Save
+            </button>
+          </div>
         </div>
       </div>
-      <% if(updating) { %>
-        <textarea autocapitalize="off" autocomplete="off" autocorrect="off" id="editor" spellcheck="false" v-model="mdRaw"><%= article.markdown %></textarea>
-      <% } else { %>
-          <textarea autocapitalize="off" autocomplete="off" autocorrect="off" id="editor" spellcheck="false" v-model="mdRaw"></textarea>
-      <% } %>
     </div>
-    <div class="medium-6 column">
-      <div class="col-title">
-        Render 
-      </div>
-      <div class="markdown-body" v-html="mdRawRender"></div>
-    </div>
-  </div>
-</div>
 
-<div id="form" class="medium-12 text-center" style="display: inline-block; margin-top: 20px;">
-    <button onclick="submit()" type="button" class="success button" style="display: inline-block;">Save</button>
-</div>
-<!-- partial -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.3/axios.min.js'></script>
-<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/190177/marked.js'></script>
-<script  src="../js/editor.js"></script>
-
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.3/axios.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/190177/marked.js"></script>
+    <script src="../js/editor.js"></script>
+  </body>
 </html>

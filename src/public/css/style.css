@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap");
+
+body {
+  font-family: "Noto Sans KR";
+  background-image: url("#");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.rect_left {
+  width: 100vw;
+  height: 315px;
+  background: #cacaca;
+  opacity: 0.15;
+  float: right;
+  margin-top: 0px;
+}
+
+.rect_blue {
+  width: 100vw;
+  height: 100px;
+  background: #edf6ff;
+  float: center;
+  position: absolute;
+  bottom: 0;
+  left: 0%;
+}
+
+.rect_right {
+  width: 100vw;
+  height: 315px;
+  background: #62debd;
+  opacity: 0.15;
+  float: center;
+  margin-top: 0px;
+}
+
+.title {
+  font: normal normal 900 60px/87px Noto Sans CJK KR;
+  color: #62debd;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.updown {
+  border: 1px solid #707070;
+  background: #707070;
+  width: 0.01px;
+  height: 100px;
+  margin-left: 40px;
+  opacity: 0.15;
+}
+
+.h {
+  font-size: 20px;
+  font-weight: normal;
+  text-align: center;
+  margin-top: 20px;
+  color: #707070;
+  padding: 0.5em 0;
+}
+
+.a {
+  font-size: 30px;
+  font-weight: bold;
+  color: #707070;
+  margin-top: 20px;
+  margin-left: 40px;
+  padding: 0.5em 0;
+}
+
+.a_w {
+  font-size: 20px;
+  font-weight: normal;
+  text-align: center;
+  margin-top: 20px;
+  color: #ffffff;
+  padding: 0.5em 0;
+}
+
+.img1 {
+  width: 60%;
+  max-width: 300px;
+  border: 1px solid #cacaca;
+  background: #62debd;
+  margin-bottom: 40px;
+  padding: 10px;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 30px;
+}
+
+.img2 {
+  width: 60%;
+  max-width: 300px;
+  border: 1px solid #cacaca;
+  background: #ffffff;
+  margin-bottom: 40px;
+  padding: 10px;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 30px;
+}
+
+.edit_title {
+  border: none;
+  border-radius: 30px;
+  width: 100%;
+  height: 50px;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  text-align: center;
+  background-color: #707070;
+  color: white;
+}
+
+.edit_btn {
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0px 3px 6px #00000029;
+  width: 80px;
+  outline: none;
+  padding: 8px 20px;
+  background-color: #60aefe;
+  cursor: pointer;
+  color: white;
+  margin-top: 80px;
+}
+
+.edit_paper {
+  font-size: 20px;
+  font-weight: normal;
+  text-align: center;
+  color: #707070;
+  background: #ffffff;
+  box-shadow: 0px 3px 6px #00000029;
+  float: center;
+  padding: 30px 30px 30px 30px;
+  border-radius: 30px;
+  margin-top: 30px;
+}
+
+input[type="button"] {
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0px 3px 6px #00000029;
+  width: 80px;
+  outline: none;
+  padding: 8px 20px;
+  background-color: #ffffff;
+  cursor: pointer;
+  zoom: 1.5;
+}
+
+input.active {
+  background-color: #62debd !important;
+  color: white !important;
+}
+
+.navbar {
+  background-color: #60aefe !important;
+}
+
+@media (min-width: 991px) {
+  .navbar-nav > li > a,
+  .navbar-brand {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    line-height: 5px;
+  }
+}

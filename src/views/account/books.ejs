@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>SDIM Page1</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="text/javascript" src="/js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+
+    <p class="a">For<br />Starters</p>
+    <div class="updown"></div>
+    <p class="title">Choose One</p>
+    <p class="h">선호하는 책을 선택하시오</p>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-1">
+          <div class="rect_left"></div>
+        </div>
+        <div class="text-center col-sm-4" onclick="choose('left')">
+          <img
+            class="img2"
+            id="book_img"
+            src="http://image.kyobobook.co.kr/images/book/xlarge/427/x9788932474427.jpg"
+            alt="Fjords"
+          />
+          <p class="h" id="name">BookName1</p>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="text-center col-sm-4" onclick="choose('right')">
+          <img
+            class="img1"
+            id="book_img2"
+            src="http://image.kyobobook.co.kr/images/book/xlarge/915/x9788997390915.jpg"
+            alt="Fjords"
+          />
+          <p class="h" id="name2"></p>
+        </div>
+        <div class="col-sm-1">
+          <div class="rect_right"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let books = [];
+      (async () => {
+        const booksInJson = await fetch("/book_list");
+        books = await booksInJson.json();
+
+        nextStage();
+      })();
+
+      function choose(side) {
+        let name, author;
+        if (books.length <= 2) {
+          if (side == "left") {
+            name = books[0].items[0].title;
+            author = books[0].items[0].author;
+          } else {
+            name = books[1].items[0].title;
+            author = books[1].items[0].author;
+          }
+
+          fetch("/books", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json;charset=utf-8",
+            },
+            body: JSON.stringify({
+              name,
+              author,
+            }),
+          });
+
+          window.location.href = "/";
+
+          return;
+        }
+
+        if (side === "left") {
+          delete books[1];
+        } else {
+          delete books[0];
+        }
+
+        books = books.filter((book) => {
+          return book !== undefined;
+        });
+
+        nextStage();
+      }
+
+      function nextStage() {
+        console.log(books);
+
+        books.sort(() => (Math.random() > 0.5 ? 1 : -1));
+
+        const left = books[0].items[0];
+        const right = books[1].items[0];
+
+        updateView(
+          left.image,
+          left.title,
+          left.author,
+          left.description,
+          right.image,
+          right.title,
+          right.author,
+          right.description
+        );
+      }
+
+      function updateView(
+        img1,
+        name1,
+        author1,
+        description1,
+        img2,
+        name2,
+        author2,
+        description2
+      ) {
+        const coverElement1 = document.getElementById("book_img");
+        const nameElement1 = document.getElementById("name");
+        //const authorElement1 = document.getElementById("author");
+        //const descriptionElement1 = document.getElementById("description");
+
+        const coverElement2 = document.getElementById("book_img2");
+        const nameElement2 = document.getElementById("name2");
+        //const authorElement2 = document.getElementById("author2");
+        //const descriptionElement2 = document.getElementById("description2");
+
+        coverElement1.src = img1;
+        nameElement1.innerHTML = name1;
+        //authorElement1.innerHTML = author1;
+        //descriptionElement1.innerHTML = description1;
+
+        coverElement2.src = img2;
+        nameElement2.innerHTML = name2;
+        //authorElement1.innerHTML = author2;
+        //descriptionElement2.innerHTML = description2;
+      }
+    </script>
+  </body>
+</html>
