@@ -8,11 +8,14 @@
   <body>
     <h1>Hello, <%= userName %></h1>
 
-    <% if(books) { %> <% for(let i = 0; i < books.length; i++) { %>
+    <% if(books && books.length >= 1) { %> <% for(let i = 0; i < books.length;
+    i++) { %>
     <div>
       <img src="<%= books[i].imageURL %>" alt="<%= books[i].title %>" />
       <p><%= books[i].title %></p>
     </div>
+    <% } %> <% } else { %> <% if(userName !== 'Guest') { %>
+    <p>No book recommended</p>
     <% } %> <% } %>
   </body>
 </html>

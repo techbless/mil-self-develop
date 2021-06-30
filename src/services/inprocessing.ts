@@ -14,10 +14,14 @@ class InprocessingService {
     }
   }
 
+  public async getJobCategories(user: User) {
+    return user.getJobs();
+  }
+
   public async recommendBook(user: User) {
     const books = await user.getBooks();
     const book = books[0];
-    console.log("-----", book);
+    console.log("-----", book.name, book.author);
     return fetch(
       `http://localhost:5000/recommend?orgTitle=${encodeURI(
         book.name
@@ -27,11 +31,12 @@ class InprocessingService {
 
   public async addBook(userId: number, name: string, author: string) {
     const escapedName = name.replace(/<[^>]*>?/gm, "");
-    console.log(escapedName);
+    const escapedAuthor = author.replace(/<[^>]*>?/gm, "");
+    console.log(name, escapedName);
     Book.create({
       userId,
       name: escapedName,
-      author,
+      author: escapedAuthor,
     });
   }
 }

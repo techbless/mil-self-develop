@@ -1,0 +1,439 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap");
+
+body {
+  font-family: "Noto Sans KR";
+  background-image: url("#");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.rect_left {
+  width: 100vw;
+  height: 315px;
+  background: #cacaca;
+  opacity: 0.15;
+  float: right;
+  margin-top: 0px;
+}
+
+.rect_blue {
+  width: 100vw;
+  height: 1000px;
+  background: #edf6ff;
+  float: center;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+}
+
+.rect_right {
+  width: 100vw;
+  height: 315px;
+  background: #62debd;
+  opacity: 0.15;
+  float: center;
+  margin-top: 0px;
+}
+
+.title {
+  font: normal normal 900 60px/87px Noto Sans CJK KR;
+  color: #62debd;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.updown {
+  border: 1px solid #707070;
+  background: #707070;
+  width: 0.01px;
+  height: 100px;
+  margin-left: 40px;
+  opacity: 0.15;
+}
+
+.h {
+  font-size: 20px;
+  font-weight: normal;
+  text-align: center;
+  margin-top: 20px;
+  color: #707070;
+  padding: 0.5em 0;
+}
+
+.h_book {
+  font-size: 20px;
+  text-align: left;
+  font: 700 20px/30px Noto Sans CJK KR;
+  color: #707070;
+}
+
+.a {
+  font-size: 30px;
+  font-weight: bold;
+  color: #707070;
+  margin-top: 20px;
+  margin-left: 40px;
+  padding: 0.5em 0;
+}
+
+.img1 {
+  width: 100px;
+  height: 130px;
+  border: none;
+  background: #62debd;
+  padding: 8px;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 15px;
+}
+
+.img2 {
+  max-width: 300px;
+  height: 430px;
+  border: 1px solid #cacaca;
+  background: #ffffff;
+  margin-bottom: 40px;
+  padding: 10px;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 30px;
+}
+
+.edit_title {
+  border: none;
+  border-radius: 30px;
+  width: 70%;
+  height: 50px;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  text-align: center;
+  background-color: #707070;
+  color: white;
+}
+
+.edit_btn {
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0px 3px 6px #00000029;
+  width: 80px;
+  outline: none;
+  padding: 8px 20px;
+  background-color: #60aefe;
+  cursor: pointer;
+  color: white;
+  margin-top: 80px;
+}
+
+.edit_paper {
+  font-size: 20px;
+  font-weight: normal;
+  text-align: center;
+  color: #707070;
+  background: #ffffff;
+  box-shadow: 0px 3px 6px #00000029;
+  float: center;
+  padding: 30px 30px 30px 30px;
+  border-radius: 30px;
+  margin-top: 30px;
+}
+
+input[type="button"] {
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0px 3px 6px #00000029;
+  width: 80px;
+  outline: none;
+  padding: 8px 20px;
+  background-color: #ffffff;
+  cursor: pointer;
+  zoom: 1.5;
+}
+
+input.active {
+  background-color: #62debd !important;
+  color: white !important;
+}
+
+.navbar {
+  background-color: #60aefe !important;
+}
+
+@media (min-width: 991px) {
+  .navbar-nav > li > a,
+  .navbar-brand {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    line-height: 5px;
+  }
+}
+
+.title_cal {
+  font: 900 60px/87px Noto Sans CJK KR;
+  font-size: 20px;
+  color: #000000;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.h_cal {
+  font: Noto Sans CJK KR;
+  font-size: 10px;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+* {
+  font-size: 80%;
+}
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+table {
+  border-spacing: 10px;
+  width: 100%;
+  height: 80%;
+  min-width: 200px;
+}
+tr {
+  position: relative;
+}
+th {
+  text-align: right;
+  color: #cdcdcd;
+  font-weight: bold;
+}
+td {
+  width: 14.285714286%;
+}
+.date {
+  text-align: right;
+  display: block;
+  height: 0;
+  padding-bottom: 80%;
+  position: relative;
+  border-bottom: 1px solid #dedbdb;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+}
+tr:first-child:not(.current-week) .date {
+  border-top: 1px solid #dedbdb;
+}
+.date ul,
+.date li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #333;
+}
+.date ul {
+  text-align: left;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  font-weight: normal;
+}
+.date li {
+  color: #222;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position: relative;
+}
+.date li:before {
+  content: "\2022";
+  color: inherit;
+  display: inline-block;
+  padding-right: 0.25em;
+}
+
+.event {
+  color: #333;
+}
+
+.current-day .date {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.today_highlight {
+  background: #707070;
+  border-radius: 3px;
+  height: 15px;
+}
+
+.weekend {
+  background: #edf6ff;
+}
+
+.weekend2 {
+  background: #f5f5f5;
+}
+
+.date .different-calendar {
+  color: #62debd;
+}
+
+ul {
+  list-style: none;
+}
+
+.tabmenu {
+  width: 250px;
+  margin: 50px auto auto auto;
+}
+.tabmenu2 {
+  width: 250px;
+  margin: 50px auto auto 250px;
+}
+.tabmenu ul li {
+  display: inline-block;
+  width: 33.33%;
+  text-align: center;
+  background: #ffffff;
+  margin-top: 50px;
+  line-height: 20px;
+}
+.tabmenu label {
+  display: block;
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 3px 3px 0px 0px;
+}
+.tabmenu input {
+  display: none;
+}
+.tabCon {
+  height: 100px;
+  width: 80%;
+  display: none;
+  text-align: left;
+  padding: 10px;
+  position: absolute;
+  margin-top: 80px;
+  box-shadow: 0px 3px 6px #00000029;
+  left: 0;
+  top: 40px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 15px;
+}
+.tabmenu input:checked ~ label {
+  background: #ccc;
+}
+.tabmenu input:checked ~ .tabCon {
+  display: block;
+}
+
+.img_tab {
+  width: 100px;
+  height: 130px;
+  border: none;
+  background: #62debd;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+
+.img_tab2 {
+  width: 80px;
+  height: 100px;
+  border: none;
+  background: #cdcdcd;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 12px;
+  margin-right: 10px;
+}
+
+.title_tab {
+  font: 500 60px/87px Noto Sans CJK KR;
+  font-size: 20px;
+  color: #000000;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.leftbox_login {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 400px;
+  height: 1000px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #60aefe 0% 0% no-repeat padding-box;
+  border-radius: 0px 300px 0px 0px;
+}
+
+.leftbox_newlogin {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 300px;
+  height: 1000px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #60aefe 0% 0% no-repeat padding-box;
+}
+
+#login-form > div {
+  margin: 15px 0;
+}
+
+.btn {
+  top: 300px;
+  left: 300px;
+  width: 50px;
+  height: 60px;
+  background: #60aefe 0% 0% no-repeat padding-box;
+  box-shadow: 0px 10px 6px #cdcdcd;
+  border-radius: 30px;
+}
+
+.repw_box {
+  width: 500px;
+  height: 400px;
+  border: none;
+  background: #ffffff;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 12px;
+  margin-top: 150px;
+  margin-left: 150px;
+}
+
+.title_login {
+  text-align: left;
+  font: bold 58px Noto Sans CJK KR;
+  font-size: 25px;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  margin-left: 50px;
+  padding-top: 50px;
+}
+
+.h_login {
+  font: Noto Sans CJK KR;
+  font-size: 15px;
+  color: #000000;
+  text-align: left;
+  margin-left: 50px;
+}
+
+.rank_box {
+  height: 400px;
+  width: 80%;
+  border: none;
+  background: #ffffff;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 12px;
+  margin-top: 50px;
+}

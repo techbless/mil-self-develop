@@ -11,14 +11,18 @@ class IndexController {
       });
     }
 
-    let recommendedBooks = await InprocessingService.recommendBook(req.user!);
-    recommendedBooks = await recommendedBooks.json();
+    try {
+      let recommendedBooks = await InprocessingService.recommendBook(req.user!);
+      recommendedBooks = await recommendedBooks.json();
 
-    res.render("index", {
-      title: "Index",
-      userName: req.user!.userName,
-      books: recommendedBooks,
-    });
+      res.render("index", {
+        title: "Index",
+        userName: req.user!.userName,
+        books: recommendedBooks,
+      });
+    } catch (err) {
+      res.redirect("/books");
+    }
   };
 }
 

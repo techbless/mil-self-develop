@@ -8,6 +8,7 @@ import { sequelize } from "./sequelize";
 import { dbType } from "./index";
 import Token from "./token";
 import Book from "./book";
+import Job from "./job";
 
 class User extends Model {
   public readonly userId!: number;
@@ -30,10 +31,12 @@ class User extends Model {
 
   public getTokens!: HasManyGetAssociationsMixin<Token>;
   public getBooks!: HasManyGetAssociationsMixin<Book>;
+  public getJobs!: HasManyGetAssociationsMixin<Job>;
 
   public static associations: {
     tokens: Association<User, Token>;
     books: Association<User, Book>;
+    jobs: Association<User, Job>;
   };
 }
 
@@ -85,6 +88,7 @@ export const associate = (db: dbType) => {
   User.hasMany(db.Article, { foreignKey: "userId" });
   User.hasMany(db.Token, { foreignKey: "userId" });
   User.hasMany(db.Book, { foreignKey: "userId" });
+  User.hasMany(db.Job, { foreignKey: "userId" });
 };
 
 export default User;

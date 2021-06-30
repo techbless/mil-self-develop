@@ -5,7 +5,13 @@ import { resolve } from "path";
 import InprocessingService from "../services/inprocessing";
 
 class InprocessingController {
-  public getChooseJob(req: Request, res: Response) {
+  public async getChooseJob(req: Request, res: Response) {
+    const jobs = await InprocessingService.getJobCategories(req.user!);
+    if (jobs.length >= 1) {
+      res.redirect("/");
+      return;
+    }
+
     res.render("account/job", {
       title: "관심 직종 선택",
     });
@@ -16,7 +22,7 @@ class InprocessingController {
     const categories = req.body.categories as string[];
 
     await InprocessingService.setJobCategory(userId, categories);
-    res.redirect("/books");
+    res.redirect("/");
   }
 
   public async getBooks(req: Request, res: Response) {
@@ -39,7 +45,8 @@ class InprocessingController {
     const author = req.body.author;
 
     await InprocessingService.addBook(userId, name, author);
-    res.redirect("/");
+
+    res.send("done");
   }
 }
 
