@@ -79,7 +79,7 @@
         nextStage();
       })();
 
-      function choose(side) {
+      async function choose(side) {
         let name, author;
         if (books.length <= 2) {
           if (side == "left") {
@@ -90,7 +90,7 @@
             author = books[1].items[0].author;
           }
 
-          fetch("/books", {
+          await fetch("/books", {
             method: "POST",
             headers: {
               "Content-Type": "application/json;charset=utf-8",
