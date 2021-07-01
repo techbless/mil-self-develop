@@ -1,21 +1,259 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-  </head>
-  <body>
-    <h1>Hello, <%= userName %></h1>
 
-    <% if(books && books.length >= 1) { %> <% for(let i = 0; i < books.length;
-    i++) { %>
-    <div>
-      <img src="<%= books[i].imageURL %>" alt="<%= books[i].title %>" />
-      <p><%= books[i].title %></p>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Calendar Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+
+<body style="overflow-x:hidden;"></body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet"> 
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <script type="text/javascript" src="js/script.js"></script>  
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+
+    <!--네비 바-->
+    <div class="navbar navbar-expand-md" role="navigation">
+      <img src="/graphic/logo/logo_done2.png" style="width:50px; margin:10px;">
+
+        <div class="collapse navbar-collapse" id="navBarMenu">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a href="#" class="title_cal" style="color:white; margin-top: 50px;">My Page</a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <% } %> <% } else { %> <% if(userName !== 'Guest') { %>
-    <p>No book recommended</p>
-    <% } %> <% } %>
-  </body>
+
+    <div class="container">
+        <div class="row" >
+          <div class="col-sm-4">
+            <table>
+                <p class="title_cal">July 2021</p>
+                <thead>
+                  <tr class="h_cal">
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td class="weekend2">
+                    <span class="date">
+                      27
+                    </span>
+                  </td>
+                  <td>
+                    <span class="date">28</span>
+                  </td>
+                  <td>
+                    <span class="date">29</span>
+                  </td>
+                  <td>
+                    <span class="date">30</span>
+                  </td>
+                  <td>
+                    <span class="date">31</span>
+                  </td>
+                  <td>
+                    <span class="date">1</span>
+                  </td>
+                  <td class="weekend">
+                    <span class="date">
+                      2
+                      <ul>
+                        <li>
+                          <span class="event">BookName1</span>
+                        </li>
+                      </ul>  
+                    </span>
+                  </td>
+                </tr>
+                <tr class="previous-week">
+                  <td class="weekend2">
+                    <span class="date">3</span>
+                  </td>
+                  <td>
+                    <span class="date">4</span>
+                  </td>
+                  <td>
+                    <span class="date">5</span>
+                  </td>
+                  <td>
+                    <span class="date">6</span>
+                  </td>
+                  <td>
+                    <span class="date">7</span>
+                  </td>
+                  <td>
+                    <span class="date">8</span>
+                  </td>
+                  <td class="weekend">
+                    <span class="date">9</span>
+                  </td>
+                </tr>
+                <tr class="current-week">
+                  <td class="weekend2">
+                    <span class="date">10</span>
+                  </td>
+                  <td>
+                    <span class="date">11</span>
+                  </td>
+                  <td>
+                    <span class="date">12</span>
+                  </td>
+                  <td>
+                    <span class="date">13</span>
+                  </td>
+                  <td class="current-day">
+                    <span class="date">
+                        <p class="today_highlight">
+                        14
+                        </p>
+                    </span>
+                  </td>
+                  <td>
+                    <span class="date">15</span>
+                  </td>
+                  <td class="weekend">
+                    <span class="date">16</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="weekend2">
+                    <span class="date">17</span>
+                  </td>
+                  <td>
+                    <span class="date">18</span>
+                  </td>
+                  <td>
+                    <span class="date">19</span>
+                  </td>
+                  <td>
+                    <span class="date">20</span>
+                  </td>
+                  <td>
+                    <span class="date">21</span>
+                  </td>
+                  <td>
+                    <span class="date">22</span>
+                  </td>
+                  <td class="weekend">
+                    <span class="date">23</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="weekend2">
+                    <span class="date">24</span>
+                  </td>
+                  <td>
+                    <span class="date">
+                      25
+                      <ul>
+                        <li class="different-calendar">
+                          <span class="event">BookName2</span>
+                        </li>
+                        <li>
+                          <span class="event">BookName3</span>
+                        </li>
+                      </ul>  
+                    </span>
+                  </td>
+                  <td>
+                    <span class="date">26</span>
+                  </td>
+                  <td>
+                    <span class="date">27</span>
+                  </td>
+                  <td>
+                    <span class="date">28</span>
+                  </td>
+                  <td>
+                    <span class="date">1</span>
+                  </td>
+                  <td class="weekend">
+                    <span class="date">2</span>
+                  </td>
+                </tr>
+              </table>
+          </div>
+          <div class="col-sm-8">
+            <div class="tabmenu">
+                <ul>
+                  <li id="tab1" class="btnCon"> <input type="radio" checked name="tabmenu" id="tabmenu1">
+                    <% if(books && books.length >= 1) { %>
+                    <label for="tabmenu1">BOOK</label>
+                    <div class="tabCon"style="height:150px; width: 75%;background-color: #EDF6FF; margin-bottom: 100px;">
+                      <img class="img_tab" style="float:left;" src="<%= books[0].imageURL %>" alt="Fjords">
+                        <p class="h_book"><%= books[0].title.replace(/<[^>]*>?/gm, "") %></p>
+                        <h><%= books[0].description.replace(/<[^>]*>?/gm, "") %></h>
+                    </div>
+                    <div class="tabCon" style="margin-top:160px; margin-left:65px; height:130px; width:65%;" >
+                      <img class="img_tab2" style="float:left;" src="<%= books[1].imageURL %>" alt="Fjords">
+                      <p class="h_book" style="font-size:15px;"><%= books[1].title.replace(/<[^>]*>?/gm, "") %></p>
+                      <h><%= books[1].description.replace(/<[^>]*>?/gm, "") %></h>
+                    </div>
+                    <div class="tabCon" style="margin-top:310px; margin-left:65px; height:130px; width:65%;">
+                      <img class="img_tab2" style="float:left;" src="<%= books[2].imageURL %>" alt="Fjords">
+                      <p class="h_book" style="font-size:15px;"><%= books[2].title.replace(/<[^>]*>?/gm, "") %></p>
+                        <h><%= books[2].description.replace(/<[^>]*>?/gm, "") %></h>
+                    </div>
+                    <div class="tabCon" style="margin-top:450px; margin-left:65px; height:130px; width:65%;">
+                      <img class="img_tab2" style="float:left;" src="<%= books[3].imageURL %>" alt="Fjords">
+                      <p class="h_book" style="font-size:15px;"><%= books[3].title.replace(/<[^>]*>?/gm, "") %></p>
+                        <h><%= books[3].description.replace(/<[^>]*>?/gm, "") %></h>
+                    </div>
+                    <div class="tabCon" style="margin-top:590px; margin-left:65px; height:130px; width:65%;">
+                      <img class="img_tab2" style="float:left;" src="<%= books[4].imageURL %>" alt="Fjords">
+                      <p class="h_book" style="font-size:15px;"><%= books[4].title.replace(/<[^>]*>?/gm, "") %></p>
+                        <h><%= books[4].description.replace(/<[^>]*>?/gm, "") %></h>
+                    </div>
+                    <% } %>
+                  </li>
+                  <li id="tab2" class="btnCon"><input type="radio" name="tabmenu" id="tabmenu2">
+                    <label for="tabmenu2">CERTIFICATE</label>
+                    <div class="tabCon"style="height:150px; width:75%;background-color: #EDF6FF;">
+                      <img class="img_tab" style="float:left;" src="http://image.kyobobook.co.kr/images/book/xlarge/915/x9788997390915.jpg" alt="Fjords">
+                        <p class="h_book">책 제목</p>
+                        <h>책에 대한 설명입니다. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세</h>
+                    </div>
+                    <div class="tabCon" style="margin-top:160px; margin-left:65px; height:120px; width:65%;">
+                      <img class="img_tab2" style="float:left;" src="http://image.kyobobook.co.kr/images/book/xlarge/915/x9788997390915.jpg" alt="Fjords">
+                      <p class="h_book" style="font-size:15px;">책 제목</p>
+                        <h>책에 대한 설명입니다. 동해물과 백두산이 마르 보우하사 우리나라만세</h>
+                    </div>
+                    <div class="tabCon" style="margin-top:280px; margin-left:65px; height:120px; width:65%;">
+                      <img class="img_tab2" style="float:left;" src="http://image.kyobobook.co.kr/images/book/xlarge/915/x9788997390915.jpg" alt="Fjords">
+                      <p class="h_book" style="font-size:15px;">책 제목</p>
+                        <h>책에 대한 설명입니다. 동해물과 백두산이 마르 보우하사 우리나라만세</h>
+                    </div>
+                    <div class="tabCon" style="margin-top:400px; margin-left:65px; height:120px; width:65%;">
+                      <img class="img_tab2" style="float:left;" src="http://image.kyobobook.co.kr/images/book/xlarge/915/x9788997390915.jpg" alt="Fjords">
+                      <p class="h_book" style="font-size:15px;">책 제목</p>
+                        <h>책에 대한 설명입니다. 동해물과 백두산이 마르 보우하사 우리나라만세</h>
+                    </div>
+                    <div class="tabCon" style="margin-top:520px; margin-left:65px; height:120px; width:65%;">
+                      <img class="img_tab2" style="float:left;" src="http://image.kyobobook.co.kr/images/book/xlarge/915/x9788997390915.jpg" alt="Fjords">
+                      <p class="h_book" style="font-size:15px;">책 제목</p>
+                        <h>책에 대한 설명입니다. 동해물과 백두산이 마르 보우하사 우리나라만세</h>
+                    </div>
+    
+                  </li>
+                </ul>
+              </div>
+          </div>
+        </div>
+    </div>
+</body>
 </html>

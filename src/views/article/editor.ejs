@@ -88,7 +88,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-1">
-          <p class="title">06/27</p>
+          <p class="title"><%= date %></p>
         </div>
         <div class="col-sm-10">
           <main role="main" class="container">
@@ -140,9 +140,7 @@
                         id="editor"
                         spellcheck="false"
                         v-model="mdRaw"
-                      >
-            <%= article.markdown %></textarea
-                      >
+                      ><%= article.markdown %></textarea>
                       <% } else { %>
                       <textarea
                         autocapitalize="off"

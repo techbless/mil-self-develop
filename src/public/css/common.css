@@ -310,16 +310,12 @@ ul {
 }
 .tabCon {
   height: 100px;
-  width: 80%;
+  width: 100%;
   display: none;
   text-align: left;
   padding: 10px;
   position: absolute;
-  margin-top: 80px;
   box-shadow: 0px 3px 6px #00000029;
-  left: 0;
-  top: 40px;
-  box-sizing: border-box;
   border: none;
   border-radius: 15px;
 }
@@ -429,11 +425,111 @@ ul {
 }
 
 .rank_box {
-  height: 400px;
-  width: 80%;
+  height: 200px;
+  width: 100%;
+  float: center;
   border: none;
   background: #ffffff;
   box-shadow: 0px 3px 6px #00000029;
-  border-radius: 12px;
-  margin-top: 50px;
+  border-radius: 10px;
+  margin-bottom: 2px;
+}
+
+.rank_box_bg {
+  height: 150px;
+  width: 100%;
+  border: none;
+  background: #edf6ff;
+}
+
+.rank_circle {
+  height: 120px;
+  width: 120px;
+  border-radius: 60px;
+  float: right;
+  position: relative;
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 100px;
+  background: #ffffff;
+}
+
+.title_rank {
+  font: 900 60px/87px Noto Sans CJK KR;
+  font-size: 20px;
+  color: #000000;
+  text-align: center;
+}
+
+.p_rank {
+  color: #707070;
+  text-align: left;
+  margin-left: 100px;
+  margin-top: 40px;
+  float: left;
+  font: 700 20px/50px Noto Sans CJK KR;
+}
+
+.p_rank2 {
+  color: #707070;
+  position: absolute;
+  margin-left: 100px;
+  margin-top: 90px;
+  float: left;
+  font: 100 20x/50px Noto Sans CJK KR;
+}
+
+.rank_box_no {
+  height: 30px;
+  width: 100%;
+  float: center;
+  background: #ffffff;
+  border-bottom: 1px solid black;
+  margin-top: 30px;
+  border-color: #cdcdcd;
+}
+
+select {
+  width: 258px;
+  position: relative;
+  left: -17px;
+  margin: 0;
+  border: 1px solid #dde1e4;
+  border-top: none;
+  font-size: 9pt;
+}
+
+datalist {
+  display: none;
+}
+
+option {
+  padding: 3px;
+}
+
+option:hover {
+  background-color: #60aefe;
+}
+
+.button_find {
+  width: 60px;
+  height: 30px;
+  position: relative;
+  left: -80px;
+  background-color: #edf6ff;
+  cursor: pointer;
+  color: #60aefe;
+  border: none;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.bar_textedit {
+  padding: 20px 150px;
+  margin-top: 100px;
+  margin-left: 420px;
+  border: none;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 15px;
 }

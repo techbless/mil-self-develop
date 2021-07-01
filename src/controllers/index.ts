@@ -9,6 +9,8 @@ class IndexController {
         userName: "Guest",
         books: null,
       });
+
+      return;
     }
 
     try {

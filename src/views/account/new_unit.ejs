@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Unit</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body style="overflow: hidden">
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <script type="text/javascript" src="js/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="leftbox_login">
+            <img
+              src="/graphic/logo/logo_done2.png"
+              style="width: 30%; margin-top: 200px; margin-left: 130px"
+            />
+            <div>
+              <p
+                class="h_login"
+                style="
+                  text-align: left;
+                  margin-top: 250px;
+                  margin-left: 100px;
+                  color: white;
+                "
+              >
+                Self Development In Military
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-10">
+          <p
+            class="title_cal"
+            style="text-align: left; padding-left: 300px; margin-top: 100px"
+          >
+            Want a new unit?
+          </p>
+          <p class="h" style="text-align: left; padding-left: 300px">
+            Please Enter your unit name!
+          </p>
+
+          <div class="panel-body">
+            <form id="login-form" action="/create_unit" method="POST">
+              <div>
+                <div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="unitName"
+                    placeholder="Unit Name"
+                    autofocus
+                    style="width: 40%; margin-left: 350px; margin-top: 50px"
+                  />
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    class="form-control btn"
+                    style="
+                      width: 40%;
+                      margin-left: 350px;
+                      margin-top: 30px;
+                      color: white;
+                    "
+                  >
+                    생성
+                  </button>
+                  <p
+                    class="h"
+                    style="
+                      text-align: center;
+                      padding-left: 100px;
+                      font-size: 10px;
+                    "
+                  >
+                    We bulid something great!
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

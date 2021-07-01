@@ -68,19 +68,25 @@ class UserController {
   };
 
   public postRegister = async (req: Request, res: Response) => {
-    const user: User = await User.create({
-      userName: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-      rank: req.body.rank,
-      isVerified: false,
-      unitId: req.body.unit_id !== "" ? req.body.unit_id : null,
-      score: 0,
-    });
+    try {
+      const user: User = await User.create({
+        userName: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+        rank: req.body.rank,
+        isVerified: false,
+        unitId: req.body.unit_id !== "" ? req.body.unit_id : null,
+        score: 0,
+      });
 
-    await EmailService.sendVerficationEmail(user, "register");
+      await EmailService.sendVerficationEmail(user, "register");
 
-    res.json(user);
+      res.json(user);
+    } catch (err) {
+      res.send(
+        "Your username may be duplicated or some input are wrong. Please check your input."
+      );
+    }
   };
 
   public getPasswordResetPage = async (req: Request, res: Response) => {

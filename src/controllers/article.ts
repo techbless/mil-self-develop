@@ -1,16 +1,16 @@
-import { Request, Response } from 'express';
-import ArticleService from '../services/article';
-
+import { Request, Response } from "express";
+import ArticleService from "../services/article";
+import * as moment from "moment";
 
 class ArticleController {
   public async getEditor(req: Request, res: Response) {
     const userId: number = req.user?.userId as number;
     const isUpdating = req.query.update;
 
-    if(isUpdating === 'true') {
+    if (isUpdating === "true") {
       const articleIdInString = req.query.articleId;
-      
-      if(articleIdInString === '') {
+
+      if (articleIdInString === "") {
         res.send("Article Id is not sepecified");
         return;
       }
@@ -19,29 +19,32 @@ class ArticleController {
       const article = await ArticleService.getArticle(articleId);
 
       const author = await article?.getUser();
-      if(author?.userId !== req.user?.userId) {
-        res.render('article/view', {
-          title: 'Not Authorized',
+      if (author?.userId !== req.user?.userId) {
+        res.render("article/view", {
+          title: "Not Authorized",
           markdown: "# You don't have it",
         });
-        
+
         return;
       }
-      
-      res.render('article/editor', {
+
+      res.render("article/editor", {
+        date: moment(article?.createdAt).format("DD-MMM"),
         updating: true,
         article,
       });
     }
 
     const article = await ArticleService.getTodayArticle(userId);
-    if(article) {
-      res.render('article/editor', {
+    if (article) {
+      res.render("article/editor", {
+        date: moment(article?.createdAt).format("DD-MMM"),
         updating: true,
         article,
       });
     } else {
-      res.render('article/editor', {
+      res.render("article/editor", {
+        date: moment().format("DD-MMM"),
         updating: false,
         article: null,
       });
@@ -49,18 +52,18 @@ class ArticleController {
   }
 
   public getCalendar(req: Request, res: Response) {
-    res.render('calendar');
+    res.render("calendar");
   }
 
   public async getArticle(req: Request, res: Response) {
     try {
       const articleIdInString: string = req.query.articleId as string;
       const articleId = +articleIdInString;
-  
+
       const result = await ArticleService.getArticle(articleId);
 
       const author = await result?.getUser();
-      if(author?.userId === req.user?.userId) {
+      if (author?.userId === req.user?.userId) {
         const escapedMarkdown = result?.markdown
           .replace(/&/g, "&amp;")
           .replace(/</g, "&lt;")
@@ -68,21 +71,22 @@ class ArticleController {
           .replace(/"/g, "&quot;")
           .replace(/'/g, "&#039;")
           .replace(/`/g, "&#96;");
-  
-        res.render('article/view', {
+
+        res.render("article/view", {
+          date: moment(result?.createdAt).format("DD-MMM"),
+          articleId: result?.articleId,
           title: result?.subject,
           markdown: escapedMarkdown,
-        })
+        });
 
         return;
       }
 
-      res.render('article/view', {
-        title: 'Not Authorized',
-        markdown: '# You are not the author',
-      })
-
-    } catch(err) {
+      res.render("article/view", {
+        title: "Not Authorized",
+        markdown: "# You are not the author",
+      });
+    } catch (err) {
       res.send(err);
     }
   }
@@ -99,33 +103,36 @@ class ArticleController {
   }
 
   public async postArticle(req: Request, res: Response) {
-      const userId: number = req.user?.userId as number;
-      const subject: string = req.body.subject;
-      const markdown: string = req.body.markdown;
-      const articleIdInString: string = req.body.articleId;
-      let articleId: number = +articleIdInString;
+    const userId: number = req.user?.userId as number;
+    const subject: string = req.body.subject;
+    const markdown: string = req.body.markdown;
+    const articleIdInString: string = req.body.articleId;
+    let articleId: number = +articleIdInString;
 
+    try {
+      let result;
+      if (articleId === -999) {
+        result = await ArticleService.addArticleTo(userId, subject, markdown);
+        articleId = result.articleId;
+      } else {
+        const article = await ArticleService.getArticle(articleId);
+        const user = await article?.getUser();
 
-      try {
-        let result;
-        if(articleId === -999) {
-          result = await ArticleService.addArticleTo(userId, subject, markdown);
-          articleId = result.articleId;
-        } else {
-          const article = await ArticleService.getArticle(articleId);
-          const user = await article?.getUser();
-
-          if(user?.userId == userId) {
-            await ArticleService.updateArticle(userId, articleId, subject, markdown);
-          }
+        if (user?.userId == userId) {
+          await ArticleService.updateArticle(
+            userId,
+            articleId,
+            subject,
+            markdown
+          );
         }
-
-        res.redirect(`/article?articleId=${articleId}`);
-      } catch(err) {
-        res.send(err);
-        return;
       }
 
+      res.redirect(`/article?articleId=${articleId}`);
+    } catch (err) {
+      res.send(err);
+      return;
+    }
   }
 }
 
