@@ -1,6 +1,7 @@
 import { Router } from "express";
 import IndexController from "../controllers";
 import wrapAsync from "./async.wrapper";
+import { isAuthenticated } from "../config/passport";
 
 class IndexRouter {
   public router!: Router;
@@ -8,7 +9,7 @@ class IndexRouter {
   constructor() {
     this.router = Router();
 
-    this.router.get("/", wrapAsync(IndexController.index));
+    this.router.get("/", isAuthenticated, wrapAsync(IndexController.index));
   }
 }
 

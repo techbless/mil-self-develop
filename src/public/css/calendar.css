@@ -1,7 +1,10 @@
-html, body {
-  font-family: 'Black Han Sans', sans-serif;
-  font-size: 30px;
-  font-weight: 300;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap");
+
+html,
+body {
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-weight: 100;
   height: 95%;
 }
 
@@ -20,7 +23,7 @@ a {
   font-weight: bold;
 }
 .scriptCalendar > thead > tr:last-child > td {
-  background-color: #90ee90;
+  background-color: white !important;
 }
 .scriptCalendar > tbody > tr > td {
   width: 14%;
@@ -30,4 +33,13 @@ a {
 .scriptCalendar {
   width: 100%;
   height: 100%;
+}
+
+td {
+  border-bottom: 1px solid rgb(214, 214, 214);
+}
+
+.date_td {
+  padding-left: 7%;
+  padding-bottom: 7%;
 }

@@ -284,11 +284,11 @@ ul {
 
 .tabmenu {
   width: 250px;
-  margin: 50px auto auto auto;
+  margin: 0;
 }
 .tabmenu2 {
   width: 250px;
-  margin: 50px auto auto 250px;
+  margin: 10px auto auto 250px;
 }
 .tabmenu ul li {
   display: inline-block;

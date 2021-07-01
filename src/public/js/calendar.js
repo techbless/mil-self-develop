@@ -87,6 +87,8 @@ async function buildCalendar() {
   for (let day = 1 - doMonth.getDay(); daysLength >= day; day++) {
     let column = row.insertCell();
 
+    column.className += " date_td";
+
     // @param 평일( 전월일과 익월일의 데이터 제외 )
     if (Math.sign(day) == 1 && lastDate.getDate() >= day) {
       // @param 평일 날짜 데이터 삽입
@@ -118,7 +120,7 @@ async function buildCalendar() {
       if (today.getMonth() == date.getMonth()) {
         // @details 현재일보다 이전인 경우이면서 현재월에 포함되는 일인경우
         if (date.getDate() > day && Math.sign(day) == 1) {
-          column.style.backgroundColor = "#E5E5E5";
+          column.style.backgroundColor = "#fafafa";
         }
 
         // @details 현재일보다 이후이면서 현재월에 포함되는 일인경우
@@ -132,7 +134,7 @@ async function buildCalendar() {
 
         // @details 현재일인 경우
         else if (date.getDate() == day) {
-          column.style.backgroundColor = "#FFFFE6";
+          column.style.backgroundColor = "#e6f8ff";
           column.style.cursor = "pointer";
           column.onclick = function () {
             calendarChoiceDay(this);
@@ -143,7 +145,7 @@ async function buildCalendar() {
         // @details 현재월보다 이전인경우
       } else if (today.getMonth() < date.getMonth()) {
         if (Math.sign(day) == 1 && day <= lastDate.getDate()) {
-          column.style.backgroundColor = "#E5E5E5";
+          column.style.backgroundColor = "#fafafa";
         }
       }
 
@@ -180,7 +182,7 @@ async function buildCalendar() {
     // article이 존재하는 날인 경우
     const res = findArticleFor(day, articles);
     if (res.length > 0) {
-      column.style.backgroundColor = "green";
+      column.style.backgroundColor = "#fcfcc5";
       column.style.cursor = "zoom-in";
       column.onclick = function () {
         window.open(`/article?articleId=${res[0].articleId}`);
@@ -206,7 +208,7 @@ function calendarChoiceDay(column) {
   }
 
   // @param 선택일 체크 표시
-  column.style.backgroundColor = "#FF9999";
+  column.style.backgroundColor = "#c7edcb";
 
   // @param 선택일 클래스명 변경
   column.classList.add("choiceDay");
