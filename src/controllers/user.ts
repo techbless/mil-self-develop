@@ -81,7 +81,7 @@ class UserController {
 
       await EmailService.sendVerficationEmail(user, "register");
 
-      res.json(user);
+      res.redirect("/login");
     } catch (err) {
       res.send(
         "Your username may be duplicated or some input are wrong. Please check your input."
