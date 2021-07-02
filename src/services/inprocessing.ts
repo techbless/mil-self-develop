@@ -100,7 +100,7 @@ class InprocessingService {
     const book = books[0];
     console.log("-----", book.name, book.author);
     return fetch(
-      `http://localhost:5000/recommend?orgTitle=${encodeURI(
+      `http://${process.env.BOOK_API_URL}/recommend?orgTitle=${encodeURI(
         book.name
       )}&orgAuthor=${encodeURI(book.author)}`
     );

@@ -40,12 +40,12 @@ class EmailService {
     let url, purposeInKorean;
     switch (purpose) {
       case "register":
-        url = `http://localhost:3000/verify?email=${user.email}&token=${token}&purpose=register`;
+        url = `http://${process.env.HOST_URL}/verify?email=${user.email}&token=${token}&purpose=register`;
         purposeInKorean = "회원가입 인증";
         //this.sendEmail(user.email, "회원가입 인증", url);
         break;
       case "reset":
-        url = `http://localhost:3000/reset_password?email=${user.email}&token=${token}`;
+        url = `http://${process.env.HOST_URL}/reset_password?email=${user.email}&token=${token}`;
         purposeInKorean = "비밀번호 초기화";
         //this.sendEmail(user.email, "비밀번호 재설정", url);
         break;
