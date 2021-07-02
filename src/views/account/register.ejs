@@ -1,50 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/common.css" />
-    <title><%= title %></title>
-  </head>
-  <body>
-    <div class="login-box">
-      <form class="login-form" action="/register" method="POST">
-        <div>
-          <label>Username:</label>
-          <input placeholder="Username" class="textbox" type="text" name="username" />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input placeholder="Password" class="textbox" type="password" name="password" />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input placeholder="Email" type="email" name="email">
-        </div>
-        <div>
-          <label>Rank:</label>
-          <input placeholder="Rank" type="text" name="rank">
-        </div>
-        <div>
-          <label>Unit:</label>
-          <input placeholder="Unit" type="text" name="unit" id="unit" disabled>
-          <button type="button" onclick="open_unit_finder()">Find</button>
-        </div>
-        <div>
-          <input class="login-btn" type="submit" value="Register" />
-        </div>
 
-        <!--Unit Id hidden data-->
-        <input type="hidden" name="unit_id" id="unit_id">
-        <script>
-          function open_unit_finder() {
-            const popUrl = "/find_unit";
-            const popOption = "top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no";
-            const unit_finder_window = window.open(popUrl, popOption);
-          }
-        </script>
-      </form>
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login_Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+
+<body style="overflow:hidden;"> 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet"> 
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <script type="text/javascript" src="js/script.js"></script>  
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="leftbox_newlogin">
+                <img src="graphic\logo\logo_done2.png" style="width:20%;margin-top:20px;margin-left:20px">
+            <div class = h style="color: white; font-size: 20px; font-weight:bolder; text-align:left; margin-top: 80px;margin-left: 20px;">Create<br> Account</div>
+            </div>
+          </div>
+          <div class="col-sm-8">
+              <div class="panel-body" style="margin-top:170px;">
+              <form id="login-form">
+                <div>
+                  <div>
+                    <input type="text" class="form-control" name="username" placeholder="Username" autofocus style="width:50%; margin-left: 300px; margin-top: 30px;">
+                  </div>
+                  <div>
+                    <input type="password" class="form-control" name="password" placeholder="password" autofocus style="width:50%; margin-left: 300px; margin-top: 30px;">
+                  </div>
+                  <div>
+                    <input type="email" class="form-control" name="email" placeholder="email" autofocus style="width:50%; margin-left: 300px; margin-top: 30px;">
+                  </div>
+                  <div>
+                    <input type="text" class="form-control" name="rank" placeholder="rank" autofocus style="width:50%; margin-left: 300px; margin-top: 30px;">
+                  </div>
+                  <div>
+                    <input type="text" onclick="open_unit_finder()" class="form-control" name="unit" id="unit" placeholder="unit" style="float:left; width:50%; margin-left: 300px; margin-top: 30px;">
+                  </div>
+                  <div>
+                    <button type="submit" class="form-control btn" style="display:inline-block;width:40%; margin-left: 350px; margin-top: 50px; color: white;">Register</button>
+                  </div>
+                </div>
+
+                <!--Unit Id hidden data-->
+                <input type="hidden" name="unit_id" id="unit_id">
+                <script>
+                  function open_unit_finder() {
+                    const popUrl = "/find_unit";
+                    const popOption = "top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no";
+                    const unit_finder_window = window.open(popUrl, popOption);
+                    const unitField = document.getElementById('unit');
+                    unitField.disabled = true;
+                  }
+                </script>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-sm-2"></div>
+
+
+        </div>
     </div>
+
     <script>
       function update_searched_unit(unit_id, unit_name) {
         const unit_field = window.document.getElementById('unit');
