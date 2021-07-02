@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap");
 
+* {
+  font-size: 100%;
+}
+
 body {
   font-family: "Noto Sans KR";
   background-image: url("#");
@@ -452,13 +456,6 @@ ul {
   margin-left: 10px;
   margin-right: 100px;
   background: #ffffff;
-}
-
-.title_rank {
-  font: 900 60px/87px Noto Sans CJK KR;
-  font-size: 20px;
-  color: #000000;
-  text-align: center;
 }
 
 .p_rank {

@@ -1,56 +1,84 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/common.css" />
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <title><%= title %></title>
-  </head>
-  <body>
-    <div>
-        <input type="text" name="unit_name" id="unit_name">
-        <button id="search">Search</button>
 
-        <table id="result_table" border="1">
-            <tr>
-                <th>Unit Id</th>
-                <th>UnitName</th>
-                <th>Select</th>
-            </tr>
-        </table>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Unit_Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
 
-        <script>
-            function closeAndSendToParent(unitId, unitName) {
-                window.opener.update_searched_unit(unitId, unitName);
-                window.close();
-            }
+<body>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-            $('#search').click(function(){
-                const searchWord = $('#unit_name').val();
-                $.ajax({
-                    url:`/search_unit?searchWord=${searchWord}`,
-                    success:function(data){
-                        result = JSON.parse(data);
-                        console.log(result);
-                        result.forEach((row) => {
-                            $('#result_table>tbody').append(`
-                                <tr>
-                                    <td>${row.unitId}</td>
-                                    <td>${row.unitName}</td>
-                                    <td>
-                                        <button onclick="closeAndSendToParent(${row.unitId}, '${row.unitName}')">
-                                            SELECT
-                                        </button>
-                                    </td>
-                                </tr>
-                            `);
-                        })
-                    }
-                })
-            })
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet"> 
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
-        </script>
+    <script type="text/javascript" src="js/script.js"></script>  
+    <link rel="stylesheet" type="text/css" href="/css/common.css">
+    
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="leftbox_newlogin">
+              <img src="graphic\logo\logo_done2.png" style="width:20%;margin-top:20px;margin-left:20px">
+              <div class = h style="color: white; font-size: 20px; font-weight:bolder; text-align:left; margin-top: 80px;margin-left: 20px;">Create<br> Unit</div>
+          </div>
+        </div>
+          <div class="col-sm-10" style="text-align: center;">
+            <p class="title_cal" style="margin-top:20%">Search Unit</p>
+            <input list=options style="padding: 15px 150px;
+            font-size: 15px;
+            margin-top: 30px;
+            border: none;
+            box-shadow: 0px 3px 10px #00000029;
+            border-radius: 15px;" id="unit_name">
+            <datalist id="options">
+                <select multiple size=10 id="unit_sel">
+                </select>
+            </datalist><br>
+            <a href="/create_unit" style=" margin-top: 30px; font-size: 15px">Create a new unit</a>
+          </div>
+          </div>
+
+
+        </div>
     </div>
+
+    <script>
+
+
+        $(document).on('change', 'input', function(){
+            var options = $('datalist')[0].options;
+            var val = $(this).val();
+            for (var i=0;i<options.length;i++){
+                if (options[i].value === val) {
+                    window.opener.update_searched_unit(options[i].value, options[i].text);
+                    window.close();
+                    break;
+                }
+            }
+        });
+
+
+        $('#unit_name').keypress(function(){
+            const searchWord = $('#unit_name').val();
+            
+            $.ajax({
+                url:`/search_unit?searchWord=${searchWord}`,
+                success:function(data){
+                    $("#unit_sel").children().remove().end()
+                    result = JSON.parse(data);
+                    result.forEach((row) => {
+                        $('#unit_sel').append($('<option></option>').val(row.unitId).html(row.unitName));
+                    })
+                }
+            })
+        })
+
+    </script>
   </body>
 </html>
