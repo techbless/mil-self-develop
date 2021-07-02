@@ -64,7 +64,7 @@ class UserController {
     }
 
     UserService.verifyUser(email as string);
-    res.send("인증 성공");
+    res.redirect("/login");
   };
 
   public postRegister = async (req: Request, res: Response) => {
