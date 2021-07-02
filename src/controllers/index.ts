@@ -12,16 +12,21 @@ class IndexController {
 
       return;
     }
+    let recommendedCerts;
+    try {
+      recommendedCerts = await InprocessingService.recommendCertificates(
+        req.user!
+      );
+    } catch (err) {
+      res.redirect("/jobs");
+      return;
+    }
 
     try {
       let recommendedBooks = await InprocessingService.recommendBook(req.user!);
       recommendedBooks = await recommendedBooks.json();
       console.log("book done");
-      const recommendedCerts = await InprocessingService.recommendCertificates(
-        req.user!
-      );
 
-      console.log(recommendedCerts);
       res.render("index", {
         title: "Index",
         userName: req.user!.userName,
