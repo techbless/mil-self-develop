@@ -30,11 +30,15 @@ def test_similarity(titles, authors, descriptions, orgDscrpt):
     return table.similarities(orgDscrpt)
 
 
+cache = {}
+
 @app.route("/recommend")
-@lru_cache(maxsize=32)
 def recommend_books():
     orgTitle = req.args.get('orgTitle')
     orgAuthor = req.args.get('orgAuthor')
+
+    if orgTitle in cache:
+        return cache[orgTitle]
 
     client_id = "tTVi8O15QxJsXLoSif8l"
     client_secret = "1LpGHCFhhd"
@@ -186,7 +190,9 @@ def recommend_books():
         finalDict['libURL'] = gukbang_link
         final.append(finalDict)
 
-    return json.dumps(final, ensure_ascii=False)
+    final_result = json.dumps(final, ensure_ascii=False)
+    cache[orgTitle] = final_result
+    return final_result
 
 if __name__ == "__main__":
     client_id = "tTVi8O15QxJsXLoSif8l"
