@@ -1,5 +1,3 @@
-
-
 .col-title {
   padding: 10px 20px;
   text-transform: uppercase;
@@ -24,19 +22,27 @@ textarea {
   font-size: 14px;
   font-weight: 500;
 }
-textarea, textarea:focus, textarea:active {
+textarea,
+textarea:focus,
+textarea:active {
   border: 0;
-  background: #F4F4F4;
+  background: #f4f4f4;
   box-shadow: none;
 }
 
 .markdown-body {
   height: 70vh;
   overflow: scroll;
+  font-size: 13px;
   box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.1);
 }
 
-textarea, .markdown-body {
+.markdown-body > table {
+  height: 30px;
+}
+
+textarea,
+.markdown-body {
   padding: 30px;
 }
 
