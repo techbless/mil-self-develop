@@ -53,31 +53,36 @@
           </div>
           <div class="col-sm-5">
             <div class="tabmenu">
+                <script>
+                  function lib() {
+                    alert("전자도서관에서 이책을 찾을 수 없습니다.");
+                  }
+                </script>
                 <ul>
                   <li id="tab1" class="btnCon"> <input type="radio" checked name="tabmenu" id="tabmenu1">
                     <% if(books && books.length >= 1) { %>
                     <label for="tabmenu1" style="font-size: 12px;">BOOK</label>
-                    <div class="tabCon"style="height:150px; width: 35vw;background-color: #EDF6FF; margin-bottom: 100px;">
+                    <div onclick="lib()" class="tabCon"style="height:150px; width: 35vw;background-color: #EDF6FF; margin-bottom: 100px;">
                       <img class="img_tab" style="float:left;" src="<%= books[0].imageURL %>" alt="Fjords">
                         <p class="h_book"><%= books[0].title.replace(/<[^>]*>?/gm, "") %></p>
                         <h><%= books[0].description.replace(/<[^>]*>?/gm, "") %></h>
                     </div>
-                    <div class="tabCon" style="margin-top:160px; margin-left:65px; height:130px; width:30vw;" >
+                    <div onclick="lib()" class="tabCon" style="margin-top:160px; margin-left:65px; height:130px; width:30vw;" >
                       <img class="img_tab2" style="float:left;" src="<%= books[1].imageURL %>" alt="Fjords">
                       <p class="h_book" style="font-size:15px;"><%= books[1].title.replace(/<[^>]*>?/gm, "") %></p>
                       <h><%= books[1].description.replace(/<[^>]*>?/gm, "") %></h>
                     </div>
-                    <div class="tabCon" style="margin-top:310px; margin-left:65px; height:130px; width:30vw;">
+                    <div onclick="lib()" class="tabCon" style="margin-top:310px; margin-left:65px; height:130px; width:30vw;">
                       <img class="img_tab2" style="float:left;" src="<%= books[2].imageURL %>" alt="Fjords">
                       <p class="h_book" style="font-size:15px;"><%= books[2].title.replace(/<[^>]*>?/gm, "") %></p>
                         <h><%= books[2].description.replace(/<[^>]*>?/gm, "") %></h>
                     </div>
-                    <div class="tabCon" style="margin-top:450px; margin-left:65px; height:130px; width:30vw;">
+                    <div onclick="lib()" class="tabCon" style="margin-top:450px; margin-left:65px; height:130px; width:30vw;">
                       <img class="img_tab2" style="float:left;" src="<%= books[3].imageURL %>" alt="Fjords">
                       <p class="h_book" style="font-size:15px;"><%= books[3].title.replace(/<[^>]*>?/gm, "") %></p>
                         <h><%= books[3].description.replace(/<[^>]*>?/gm, "") %></h>
                     </div>
-                    <div class="tabCon" style="margin-top:590px; margin-left:65px; height:130px; width:30vw;">
+                    <div onclick="lib()" class="tabCon" style="margin-top:590px; margin-left:65px; height:130px; width:30vw;">
                       <img class="img_tab2" style="float:left;" src="<%= books[4].imageURL %>" alt="Fjords">
                       <p class="h_book" style="font-size:15px;"><%= books[4].title.replace(/<[^>]*>?/gm, "") %></p>
                         <h><%= books[4].description.replace(/<[^>]*>?/gm, "") %></h>
