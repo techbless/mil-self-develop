@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+      .a_w {
+        font-size: 20px;
+        font-weight: normal;
+        text-align: center;
+        margin-top: 20px;
+        color: #ffffff;
+        padding: 0.5em 0;
+      }
+      
+    </style>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -25,7 +36,15 @@
       rel="stylesheet"
       href='https://fonts.googleapis.com/css?family=Source+Code+Pro:500"rel="stylesheet'
     />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
     <link rel="stylesheet" href="../css/editor.css" />
+
+    <style>
+      .edit_title:focus {
+        background-color: #7c7c7c;
+        color: white;
+      }
+    </style>
     <script>
       function submit() {
         const editor = document.getElementById("editor");
@@ -64,25 +83,11 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
     <script type="text/javascript" src="js/script.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
 
     <!--네비 바-->
     <div class="navbar navbar-expand-md" role="navigation">
       <p class="a_w">SDIM</p>
-
-      <div class="collapse navbar-collapse" id="navBarMenu">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a href="#" class="a_w">partA</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="a_w">partB</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="a_w">My Page</a>
-          </li>
-        </ul>
-      </div>
     </div>
 
     <div class="container">
@@ -155,7 +160,7 @@
                     <div class="medium-6 column">
                       <div class="col-title">Render</div>
                       <div
-                        style="background-color: white"
+                        style="background-color: white;"
                         class="markdown-body"
                         v-html="mdRawRender"
                       ></div>
