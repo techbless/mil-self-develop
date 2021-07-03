@@ -30,6 +30,16 @@ class UnitController {
     await UnitService.createUnit(unitName);
     res.redirect("/");
   }
+
+  public async getUpdateUnit(req: Request, res: Response) {
+    res.render("account/select_unit");
+  }
+
+  public async postUpdateUnit(req: Request, res: Response) {
+    const unitId = req.body.unitId as string;
+    await UnitService.updateUnit(req.user!, +unitId);
+    res.redirect("/");
+  }
 }
 
 export default new UnitController();

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Unit Select</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+
+<body style="overflow:hidden;">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet"> 
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+    <script type="text/javascript" src="js/script.js"></script>  
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="leftbox_newlogin" style="background-color: #EDF6FF">
+              <img src="graphic\logo\logo_color.png" style="width:15%; margin:30px;">
+              <div class = title_login style="color: #60AEFE; font-size: 20px; font-weight:bolder; text-align:left; margin-left: 30px;">Find<br> Account</div>
+            </div>
+          </div>
+          <div class="col-sm-8">  
+            <div class="repw_box">
+              <form id="login-form" action="/select_unit" method="POST">
+                <p class="title_login">
+                  Want to join a unit?
+                </p>
+                </p>
+                <div>
+                    <input onclick="open_unit_finder()" id="unit" type="text" class="form-control" name="email" placeholder="Email" autofocus style="width:80%; margin-left:50px; margin-top: 50px;">
+                    <p class="h_login"> >>> Please find a unit</p>
+                    <input type="hidden" name="unitId" id="unit_id">
+                    <script>
+                      function open_unit_finder() {
+                        const popUrl = "/find_unit";
+                        const popOption = "top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no";
+                        const unit_finder_window = window.open(popUrl, popOption);
+                        const unitField = document.getElementById('unit');
+                        unitField.disabled = true;
+                      }
+                    </script>
+                </div>
+                <div>
+                    <button type="submit" class="form-control btn" style="width:50%; margin-left: 120px; margin-top:50px; color: white;">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+    <script>
+      function update_searched_unit(unit_id, unit_name) {
+        const unit_field = window.document.getElementById('unit');
+        unit_field.value = unit_name;
+        const unit_id_field = window.document.getElementById('unit_id');
+        unit_id_field.value = unit_id;
+      }
+    </script>
+  </body>
+</html>
+
+
+

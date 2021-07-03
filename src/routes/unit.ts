@@ -22,6 +22,16 @@ class UnitRouter {
       isAuthenticated,
       wrapAsync(UnitController.postCreateUnit)
     );
+    this.router.get(
+      "/select_unit",
+      isAuthenticated,
+      UnitController.getUpdateUnit
+    );
+    this.router.post(
+      "/select_unit",
+      isAuthenticated,
+      wrapAsync(UnitController.postUpdateUnit)
+    );
   }
 }
 
