@@ -33,7 +33,6 @@ textarea:active {
 .markdown-body {
   height: 70vh;
   overflow: scroll;
-  font-size: 13px;
   box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.1);
 }
 
