@@ -55,7 +55,7 @@
             <div class="tabmenu">
                 <script>
                   function lib() {
-                    alert("전자도서관에서 이책을 찾을 수 없습니다.");
+                    window.open('https://eds.a.ebscohost.com/eds/results?vid=17&sid=ba1ad0df-3cd6-4f33-86c9-b61964ce519e%40sessionmgr4006&bquery=history&bdata=Jmxhbmc9a28mdHlwZT0wJnNlYXJjaE1vZGU9QW5kJnNpdGU9ZWRzLWxpdmU%3d');
                   }
                 </script>
                 <ul>
@@ -91,24 +91,70 @@
                   </li>
                   <li id="tab2" class="btnCon"><input type="radio" name="tabmenu" id="tabmenu2">
                     <label for="tabmenu2" style="font-size: 12px;">CERTIFICATE</label>
-                    <div onclick="openLink()" class="tabCon"style="background-color: #e9e9e9; height:150px; width:75%;background-color: #EDF6FF;">
-                      <p class="h_book" style="padding-top: 50px; text-align: center; font-size: 28px"><%= certs[0] %> </p>
+                    <div onclick="openLink(this)" class="tabCon"style="background-color: #e9e9e9; height:150px; width:75%;background-color: #EDF6FF;">
+                      <p class="h_book" style="padding-top: 50px; text-align: center; font-size: 28px"><%= certs[0] %></p>
                     </div>
-                    <div onclick="openLink()" class="tabCon" style="background-color: #e9e9e9; margin-top:160px; margin-left:65px; height:120px; width:65%;">
+                    <div onclick="openLink(this)" class="tabCon" style="background-color: #e9e9e9; margin-top:160px; margin-left:65px; height:120px; width:65%;">
                       <p class="h_book" style="padding-top: 30px; text-align: center; font-size:23px;"><%= certs[1] %></p>
                     </div>
-                    <div onclick="openLink()" class="tabCon" style="background-color: #e9e9e9; margin-top:310px; margin-left:65px; height:120px; width:65%;">
+                    <div onclick="openLink(this)" class="tabCon" style="background-color: #e9e9e9; margin-top:310px; margin-left:65px; height:120px; width:65%;">
                       <p class="h_book" style="padding-top: 30px; text-align: center; font-size:23px;"><%= certs[2] %></p>
                     </div>
-                    <div onclick="openLink()" class="tabCon" style="background-color: #e9e9e9; margin-top:450px; margin-left:65px; height:120px; width:65%;">
+                    <div onclick="openLink(this)" class="tabCon" style="background-color: #e9e9e9; margin-top:450px; margin-left:65px; height:120px; width:65%;">
                       <p class="h_book" style="padding-top: 30px; text-align: center; font-size:23px;"><%= certs[3] %></p>
                     </div>
-                    <div onclick="openLink()" class="tabCon" style="background-color: #e9e9e9; margin-top:590px; margin-left:65px; height:120px; width:65%;">
+                    <div onclick="openLink(this)" class="tabCon" style="background-color: #e9e9e9; margin-top:590px; margin-left:65px; height:120px; width:65%;">
                       <p class="h_book" style="padding-top: 30px; text-align: center; font-size:23px;"><%= certs[4] %></p>
                     </div>
                     <script>
-                      function openLink() {
-                        window.open('http://www.narasarang.or.kr/pt0000/indexPage.do');
+                      const dict = {
+                        '직업상담사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=9511',
+                        '사회복지사':'https://www.q-net.or.kr/crf005.do?id=crf00503&gSite=L&gId=52&jmCd=9738',
+                        '공인중개사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=9630',
+                        '유기농업기사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=1592',
+                        '유기농업산업기사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=2592',
+                        '실내건축기사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=1282',
+                        '승강기기사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=1555',
+                        '승강기기능사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=7940',
+                        '자동차정비기사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=1070',
+                        '자동차정비기능사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=6281',
+                        '용접기사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=1022',
+                        '초음파비파괴검사기사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=1612',
+                        '초음파비파괴검사기능사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=7472',
+                        '전기공사기사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=1160',
+                        '전기기사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=1150',
+                        '전기산업기사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=2140',
+                        '전기기능사':'https://www.q-net.or.kr/crf005.do?id=crf00505&gSite=Q&gId=&jmCd=7780&examInstiCd=1',
+                        '정보통신기사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=1192',
+                        '무선설비기사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=1200',
+                        '토목산업기사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=2240',
+                        '실내건축기능사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=7152',
+                        '배관기능장':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=3081',
+                        '배관기능사':'https://www.q-net.or.kr/crf005.do?id=crf00505&gSite=Q&gId=&jmCd=7780&examInstiCd=1',
+                        '가스기능사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=6335',
+                        '무선설비기능사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=6880',
+                        '정보처리기능사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=6921',
+                        '굴삭기운전기능사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=7862',
+                        '로더운전기능사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=7866',
+                        '롤러운전기능사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=7871',
+                        '기중기운전기능사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=7861',
+                        '지게차운전기능사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=7875',
+                        '유통관리사':'https://www.q-net.or.kr/crf005.do?id=crf00505&gSite=Q&gId=&jmCd=7780&examInstiCd=1',
+                        '한식조리기능사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=7910',
+                        '양식조리기능사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=7911',
+                        '컴퓨터활용능력1급':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=0492',
+                        '컴퓨터활용능력2급':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=0493',
+                        '공인노무사':'http://www.q-net.or.kr/crf005.do?id=crf00503&gSite=Q&gId=&jmCd=9500',
+                        '감정평가사':'https://www.q-net.or.kr/crf005.do?id=crf00505&gSite=Q&gId=&jmCd=7780&examInstiCd=1'
+                      }
+
+                      function openLink(el) {
+                        const name = el.children[0].innerText.split(' ')[0];
+                        const url = dict[name];
+                        if(url)
+                          window.open(url);
+                        else
+                          alert("이 자격증은 상세 정보를 제공하지 않습니다.")
                       }
                     </script>
                   </li>
